@@ -10,12 +10,8 @@
 //
 
 
-import javax.swing.*;
-
 public class AgarRunner
 {
-    public JFrame frame;
-
     public static void main( String[] args )
     {
 
