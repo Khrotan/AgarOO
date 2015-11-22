@@ -8,7 +8,7 @@ public class InformationPanel extends JPanel
     {
         //TODO: choose appropriate value
         this.setSize( 256, 384 );
-        this.setBackground( Color.RED );
+        this.setBackground( Color.LIGHT_GRAY );
     }
 
     public Dimension getPreferredSize()

@@ -1,12 +1,14 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class RandomFactory
 {
-    public ArrayList<String> metuCengNames;
-    int windowWidth;
-    int windowHeight;
+    private ArrayList<String> metuCengNames;
+    private int windowWidth;
+    private int windowHeight;
+    private Random random = new Random();
 
     public RandomFactory( int windowWidth, int windowHeight )
     {
@@ -46,18 +48,38 @@ public class RandomFactory
         this.windowHeight = windowHeight;
     }
 
+    public static Color generateColor()
+    {
+        return new Color( (int) ( Math.random() * 256 ), (int) ( Math.random() * 256 ), (int) ( Math.random() * 256 ) );
+    }
+
+    public static Color generateTransparentColor()
+    {
+        return new Color( (float) ( Math.random() ), (float) ( Math.random() ), (float) ( Math.random() ), (float) 0.3 );
+    }
+
+    public static Dimension generateRandomDirection()
+    {
+        return new Dimension( (int) ( Math.random() * ( 1024 - 256 ) ), (int) ( Math.random() * 768 ) );
+    }
+
+    public static int generateStepTurnNumber()
+    {
+        return (int) ( Math.random() * 100 );
+    }
+
     public String generateName()
     {
         return this.metuCengNames.get( (int) ( Math.random() * 29 ) );
     }
 
-    public static Color generateColor()
+    public int generateNumberBetween( int a, int b )
     {
-        return new Color( (int) ( Math.random() % 256 ), (int) ( Math.random() % 256 ), (int) ( Math.random() % 256 ) );
+        return random.nextInt( b - a + 1 ) + a;
     }
 
     public Dimension generateDimension()
     {
-        return new Dimension( (int) ( Math.random() * this.windowWidth ), (int) ( Math.random() * this.windowHeight ) );
+        return new Dimension( (int) ( Math.random() * ( this.windowWidth - 256 ) ), (int) ( Math.random() * ( this.windowHeight ) ) );
     }
 }

@@ -4,21 +4,17 @@ import java.awt.*;
 
 public class ApplicationWindow extends JFrame
 {
-    // TODO: make an appropriate layout, place panels in that layout
-
     public LogoPanel logoPanel;
     public InformationPanel informationPanel;
     public GameDisplayPanel gameDisplayPanel;
-
-    private GridLayout gridLayout;
 
     public ApplicationWindow( LogoPanel logoPanel, InformationPanel informationPanel, GameDisplayPanel gameDisplayPanel ) throws HeadlessException
     {
         super();
 
-        this.logoPanel = logoPanel;
-        this.informationPanel = informationPanel;
-        this.gameDisplayPanel = gameDisplayPanel;
+        this.setLogoPanel( logoPanel );
+        this.setInformationPanel( informationPanel );
+        this.setGameDisplayPanel( gameDisplayPanel );
 
         this.setTitle( "Agar.OO" );
         this.setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE );
@@ -31,10 +27,41 @@ public class ApplicationWindow extends JFrame
         this.setResizable( false );
     }
 
-    public void repaintWindow()
+    @Override
+    public void paintComponents( Graphics g )
     {
-        logoPanel.repaint();
-        informationPanel.repaint();
-        gameDisplayPanel.repaint();
+        super.paintComponents( g );
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON );
+    }
+
+    public LogoPanel getLogoPanel()
+    {
+        return logoPanel;
+    }
+
+    public void setLogoPanel( LogoPanel logoPanel )
+    {
+        this.logoPanel = logoPanel;
+    }
+
+    public InformationPanel getInformationPanel()
+    {
+        return informationPanel;
+    }
+
+    public void setInformationPanel( InformationPanel informationPanel )
+    {
+        this.informationPanel = informationPanel;
+    }
+
+    public GameDisplayPanel getGameDisplayPanel()
+    {
+        return gameDisplayPanel;
+    }
+
+    public void setGameDisplayPanel( GameDisplayPanel gameDisplayPanel )
+    {
+        this.gameDisplayPanel = gameDisplayPanel;
     }
 }
