@@ -6,7 +6,9 @@ public class InformationPanel extends JPanel
 {
     public InformationPanel( Environment env )
     {
-
+        //TODO: choose appropriate value
+        this.setSize( 256, 384 );
+        this.setBackground( Color.RED );
     }
 
     public Dimension getPreferredSize()
@@ -14,7 +16,7 @@ public class InformationPanel extends JPanel
         return null;
     }
 
-    public void RefreshLog()
+    public void RefreshInformation()
     {
 
     }

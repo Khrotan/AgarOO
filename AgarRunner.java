@@ -10,10 +10,124 @@
 //
 
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 public class AgarRunner
 {
+    private BufferedImage logo;
+
+    {
+        try
+        {
+            logo = ImageIO.read( new File( "Logo.bmp" ) );
+        }
+        catch ( IOException e )
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public Environment environment;
+
+    public LogoPanel logoPanel;
+    public InformationPanel informationPanel;
+    public GameDisplayPanel gameDisplayPanel;
+
+    public ApplicationWindow applicationWindow;
+
+    public AgarRunner()
+    {
+        environment = new Environment( 1024, 768, 256, logo );
+
+        logoPanel = new LogoPanel( environment, logo );
+        informationPanel = new InformationPanel( environment );
+        gameDisplayPanel = new GameDisplayPanel( environment );
+
+        applicationWindow = new ApplicationWindow( logoPanel, informationPanel, gameDisplayPanel );
+
+        this.applicationWindow.setVisible( true );
+
+        logoPanel.setVisible( true );
+        informationPanel.setVisible( true );
+        gameDisplayPanel.setVisible( true );
+    }
+
+    public Environment getEnvironment()
+    {
+        return environment;
+    }
+
+    public void setEnvironment( Environment environment )
+    {
+        this.environment = environment;
+    }
+
+    public BufferedImage getLogo()
+    {
+        return logo;
+    }
+
+    public void setLogo( BufferedImage logo )
+    {
+        this.logo = logo;
+    }
+
+    public LogoPanel getLogoPanel()
+    {
+        return logoPanel;
+    }
+
+    public void setLogoPanel( LogoPanel logoPanel )
+    {
+        this.logoPanel = logoPanel;
+    }
+
+    public InformationPanel getInformationPanel()
+    {
+        return informationPanel;
+    }
+
+    public void setInformationPanel( InformationPanel informationPanel )
+    {
+        this.informationPanel = informationPanel;
+    }
+
+    public GameDisplayPanel getGameDisplayPanel()
+    {
+        return gameDisplayPanel;
+    }
+
+    public void setGameDisplayPanel( GameDisplayPanel gameDisplayPanel )
+    {
+        this.gameDisplayPanel = gameDisplayPanel;
+    }
+
+    public ApplicationWindow getApplicationWindow()
+    {
+        return applicationWindow;
+    }
+
+    public void setApplicationWindow( ApplicationWindow applicationWindow )
+    {
+        this.applicationWindow = applicationWindow;
+    }
+
     public static void main( String[] args )
     {
+        AgarRunner agarRunner = new AgarRunner();
 
+        SugarFactory sugarFactory = new SugarFactory();
+
+        for ( int i = 0; i < 56; i++ )
+        {
+            agarRunner.getEnvironment().createFood( sugarFactory );
+        }
+
+        agarRunner.getGameDisplayPanel().repaint();
+
+        agarRunner.getEnvironment().createFood( sugarFactory );
     }
 }

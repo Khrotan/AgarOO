@@ -18,6 +18,8 @@ public abstract class Entity
     public double mass;
     public double speed;
     public StepStrategy strategy;
+    public Vector direction;
+    public Vector location;
 
     public void step( double deltaTime )
     {

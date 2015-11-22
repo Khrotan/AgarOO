@@ -19,7 +19,7 @@ public class BasicCell extends Cell
         this.cellsSwallowed = 0;
         //TODO: choose an appropriate speed value
         this.speed = 100;
-        this.color = new Color( (int) ( Math.random() % 256 ), (int) ( Math.random() % 256 ), (int) ( Math.random() % 256 ) );
+        this.color = RandomFactory.generateColor();
         //TODO: choose an appropriate mass value
         this.mass = 60;
         this.foodEaten = 0;

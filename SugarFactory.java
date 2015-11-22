@@ -10,8 +10,6 @@
 //
 
 
-import java.awt.*;
-
 public class SugarFactory extends FoodFactory
 {
 
@@ -21,11 +19,13 @@ public class SugarFactory extends FoodFactory
         Sugar sugarToBeCreated = new Sugar();
 
         sugarToBeCreated.mass = Math.random();
-        sugarToBeCreated.color = new Color( (int) ( Math.random() % 256 ), (int) ( Math.random() % 256 ), (int) ( Math.random() % 256 ) );
+        sugarToBeCreated.color = RandomFactory.generateColor();
         sugarToBeCreated.speed = 0;
         sugarToBeCreated.step( (double) 0 );
         //TODO: Decide a appropriate length
-        sugarToBeCreated.sideHalfLength = (int) ( Math.random() % 80 );
+        sugarToBeCreated.sideHalfLength = (int) ( Math.random() * 80 );
+        sugarToBeCreated.location = new Vector( env.randomFactory.generateDimension() );
+        sugarToBeCreated.direction = new Vector( env.randomFactory.generateDimension() );
 
         env.entities.add( sugarToBeCreated );
         return sugarToBeCreated;

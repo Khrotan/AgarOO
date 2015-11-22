@@ -10,8 +10,6 @@
 //
 
 
-import java.awt.*;
-
 public class OrganismFactory extends FoodFactory
 {
     @Override
@@ -20,7 +18,7 @@ public class OrganismFactory extends FoodFactory
         Organism organismToBeCreated = new Organism();
 
         organismToBeCreated.mass = Math.random();
-        organismToBeCreated.color = new Color( (int) ( Math.random() % 256 ), (int) ( Math.random() % 256 ), (int) ( Math.random() % 256 ) );
+        organismToBeCreated.color = RandomFactory.generateColor();
         // TODO: make organism speed a small value
         organismToBeCreated.speed = 15;
         organismToBeCreated.step( (double) 0 );

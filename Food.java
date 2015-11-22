@@ -14,8 +14,5 @@ import java.awt.*;
 
 public abstract class Food extends Entity
 {
-    public void draw( Graphics2D g2d )
-    {
-
-    }
+    public abstract void draw( Graphics2D g2d );
 }

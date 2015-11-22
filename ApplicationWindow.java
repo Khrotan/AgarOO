@@ -10,6 +10,8 @@ public class ApplicationWindow extends JFrame
     public InformationPanel informationPanel;
     public GameDisplayPanel gameDisplayPanel;
 
+    private GridLayout gridLayout;
+
     public ApplicationWindow( LogoPanel logoPanel, InformationPanel informationPanel, GameDisplayPanel gameDisplayPanel ) throws HeadlessException
     {
         super();
@@ -19,5 +21,20 @@ public class ApplicationWindow extends JFrame
         this.gameDisplayPanel = gameDisplayPanel;
 
         this.setTitle( "Agar.OO" );
+        this.setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE );
+
+        this.setLayout( null );
+        this.add( logoPanel );
+        this.add( informationPanel );
+        this.add( gameDisplayPanel );
+        this.setSize( new Dimension( 1024, 768 ) );
+        this.setResizable( false );
+    }
+
+    public void repaintWindow()
+    {
+        logoPanel.repaint();
+        informationPanel.repaint();
+        gameDisplayPanel.repaint();
     }
 }

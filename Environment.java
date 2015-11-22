@@ -17,58 +17,22 @@ public class Environment
 {
     public int windowWidth;
     public int windowHeight;
-    public int leftPanelWidth;
     public BufferedImage logo;
     public int numberOfSteps;
     public ArrayList<Entity> entities;
-    public ArrayList<String> metuCengNames;
+    public RandomFactory randomFactory;
 
     public Environment( int windowWidth, int windowHeight, int leftPanelWidth, BufferedImage logo )
     {
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
-        this.leftPanelWidth = leftPanelWidth;
         this.logo = logo;
 
         this.entities = new ArrayList<>();
 
-        this.metuCengNames = new ArrayList<>();
-        this.metuCengNames.add( "AhmetOguz" );
-        this.metuCengNames.add( "FerdaNur" );
-        this.metuCengNames.add( "IsmailSengor" );
-        this.metuCengNames.add( "Volkan" );
-        this.metuCengNames.add( "Aysenur" );
-        this.metuCengNames.add( "Tolga" );
-        this.metuCengNames.add( "Ruken" );
-        this.metuCengNames.add( "Nihan" );
-        this.metuCengNames.add( "AliHikmet" );
-        this.metuCengNames.add( "Seyda" );
-        this.metuCengNames.add( "Veysi" );
-        this.metuCengNames.add( "Sinan" );
-        this.metuCengNames.add( "Pinar" );
-        this.metuCengNames.add( "Murat" );
-        this.metuCengNames.add( "Halit" );
-        this.metuCengNames.add( "Ertan" );
-        this.metuCengNames.add( "Atilla" );
-        this.metuCengNames.add( "Faruk" );
-        this.metuCengNames.add( "Yusuf" );
-        this.metuCengNames.add( "Uluc" );
-        this.metuCengNames.add( "Erol" );
-        this.metuCengNames.add( "OnurTolga" );
-        this.metuCengNames.add( "Cevat" );
-        this.metuCengNames.add( "Sibel" );
-        this.metuCengNames.add( "Selim" );
-        this.metuCengNames.add( "IsmailHakki" );
-        this.metuCengNames.add( "Gokturk" );
-        this.metuCengNames.add( "Fatos" );
-        this.metuCengNames.add( "AdnanTheBoss" );
-        this.metuCengNames.add( "Asuman" );
+        this.randomFactory = new RandomFactory( windowWidth, windowHeight );
     }
 
-    public String generateName()
-    {
-        return this.metuCengNames.get( (int) ( Math.random() * 29 ) );
-    }
 
     public StepStrategy generateSugarStepStrategy()
     {
@@ -87,16 +51,12 @@ public class Environment
 
     public Food createFood( FoodFactory factory )
     {
-        Food food = factory.createFood( this );
-
-        entities.add( food );
-
-        return food;
+        return factory.createFood( this );
     }
 
     public Cell createCell()
     {
-        BasicCell basicCellToBeCreated = new BasicCell( this.generateName() );
+        BasicCell basicCellToBeCreated = new BasicCell( randomFactory.generateName() );
 
         entities.add( basicCellToBeCreated );
         return basicCellToBeCreated;
@@ -107,14 +67,66 @@ public class Environment
 
     }
 
+    public int getWindowWidth()
+    {
+        return windowWidth;
+    }
+
+    public void setWindowWidth( int windowWidth )
+    {
+        this.windowWidth = windowWidth;
+    }
+
+    public int getWindowHeight()
+    {
+        return windowHeight;
+    }
+
+    public void setWindowHeight( int windowHeight )
+    {
+        this.windowHeight = windowHeight;
+    }
+
+    public BufferedImage getLogo()
+    {
+        return logo;
+    }
+
+    public void setLogo( BufferedImage logo )
+    {
+        this.logo = logo;
+    }
+
+    public int getNumberOfSteps()
+    {
+        return numberOfSteps;
+    }
+
+    public void setNumberOfSteps( int numberOfSteps )
+    {
+        this.numberOfSteps = numberOfSteps;
+    }
+
+    public ArrayList<Entity> getEntities()
+    {
+        return entities;
+    }
+
+    public void setEntities( ArrayList<Entity> entities )
+    {
+        this.entities = entities;
+    }
+
     public static void main( String[] args )
     {
         Environment testEnv = new Environment( 1024, 768, 30, new BufferedImage( 1, 1, 1 ) );
-        System.out.println( testEnv.metuCengNames.size() );
-        System.out.println( Math.random() );
-        for ( int i = 0; i < 30; i++ )
+
+        ArrayList<Entity> entityArrayList = new ArrayList<>();
+        SugarFactory sugarFactory = new SugarFactory();
+
+        for ( int i = 0; i < 56; i++ )
         {
-            System.out.println( testEnv.generateName() );
+            testEnv.createFood( sugarFactory );
         }
     }
 }

@@ -15,18 +15,30 @@ import java.awt.*;
 
 public class GameDisplayPanel extends JPanel
 {
+    private Environment environmentReference;
+
     public GameDisplayPanel( Environment environment )
     {
-
+        environmentReference = environment;
+        //TODO: choose appropriate value
+        this.setSize( 1024 - 256, 768 );
+        this.setBounds( 256, 0, 1024 - 256, 768 );
     }
 
+    @Override
     public Dimension getPreferredSize()
     {
         return null;
     }
 
+    @Override
     public void paintComponent( Graphics g )
     {
+        Graphics2D g2 = (Graphics2D) g;
 
+        for ( Entity entity : environmentReference.getEntities() )
+        {
+            entity.draw( g2 );
+        }
     }
 }
