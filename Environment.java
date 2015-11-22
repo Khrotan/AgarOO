@@ -47,7 +47,7 @@ public class Environment
         }
         else
         {
-            candidateStrategy = new GrabFood( cell, this );
+            candidateStrategy = new GrabFood( this );
         }
         return candidateStrategy;
     }
@@ -82,23 +82,23 @@ public class Environment
 
     public void initializeEnvironment( SugarFactory sugarFactory, OrganismFactory organismFactory )
     {
-        for ( int i = 0; i < 100; i++ )
+        for ( int i = 0; i < 50; i++ )
         {
             this.createFood( sugarFactory );
         }
 
-        for ( int i = 0; i < 100; i++ )
+        for ( int i = 0; i < 50; i++ )
         {
             this.createFood( organismFactory );
         }
 
-        for ( int i = 0; i < 10; i++ )
+        for ( int i = 0; i < 5; i++ )
         {
             Cell cell = this.createCell();
         }
     }
 
-    public Food getNearestFood( Cell cell )
+    public Food getNearestFood( Entity cell )
     {
         double minDist = Double.MAX_VALUE;
         Entity nearestFood = null;
