@@ -74,27 +74,24 @@ public class Environment
     public void stepAll()
     {
         this.getFoodEntities().forEach( Entity::step );
-        for ( Entity e : getCellEntities() )
-        {
-            e.step();
-        }
+        getCellEntities().forEach( Entity::step );
     }
 
     public void initializeEnvironment( SugarFactory sugarFactory, OrganismFactory organismFactory )
     {
-        for ( int i = 0; i < 50; i++ )
+        for ( int i = 0; i < 2; i++ )
         {
             this.createFood( sugarFactory );
         }
 
-        for ( int i = 0; i < 50; i++ )
+        for ( int i = 0; i < 2; i++ )
         {
             this.createFood( organismFactory );
         }
 
         for ( int i = 0; i < 5; i++ )
         {
-            Cell cell = this.createCell();
+            this.createCell();
         }
     }
 
