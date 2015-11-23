@@ -7,6 +7,8 @@
 .mtj.tmp/
 
 # Package Files #
+/out/production/MainModule/README.md
+/out/production/MainModule/.gitignore
 *.jar
 *.war
 *.ear
