@@ -1,3 +1,5 @@
+package CENG443.AgarOO;
+
 public class LoseMass extends StepStrategy
 {
     public double losePercantage;

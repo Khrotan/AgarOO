@@ -1,3 +1,5 @@
+package CENG443.AgarOO;
+
 public abstract class StepStrategy
 {
     protected int numberOfTurns;

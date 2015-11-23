@@ -1,3 +1,5 @@
+package CENG443.AgarOO;
+
 public class MoveLinear extends StepStrategy
 {
     public MoveLinear( Object o )

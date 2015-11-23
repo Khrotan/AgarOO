@@ -1,6 +1,8 @@
-public class AvoidLarger extends StepStrategy
+package CENG443.AgarOO;
+
+public class ChaseSmaller extends StepStrategy
 {
-    public AvoidLarger( Object o )
+    public ChaseSmaller( Object o )
     {
 
     }

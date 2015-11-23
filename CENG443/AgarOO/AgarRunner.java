@@ -1,3 +1,5 @@
+package CENG443.AgarOO;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,7 +17,7 @@ public class AgarRunner
     {
         try
         {
-            setLogo( ImageIO.read( new File( "Logo.bmp" ) ) );
+            setLogo( ImageIO.read( new File( "CENG443/AgarOO/Logo.bmp" ) ) );
         }
         catch ( IOException e )
         {

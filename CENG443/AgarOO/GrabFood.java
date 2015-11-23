@@ -1,3 +1,5 @@
+package CENG443.AgarOO;
+
 public class GrabFood extends StepStrategy
 {
     Food nearestFood;

@@ -1,3 +1,5 @@
+package CENG443.AgarOO;
+
 public class StandStill extends StepStrategy
 {
     public StandStill( Entity entity )

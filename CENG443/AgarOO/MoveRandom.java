@@ -1,3 +1,5 @@
+package CENG443.AgarOO;
+
 public class MoveRandom extends StepStrategy
 {
     public MoveRandom( Entity entity )

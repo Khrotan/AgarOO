@@ -1,3 +1,5 @@
+package CENG443.AgarOO;
+
 import java.awt.*;
 
 public class Hunter extends CellDecorator
