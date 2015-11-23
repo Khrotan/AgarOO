@@ -2,13 +2,16 @@
 *.xml
 *.iml
 *.name
+*.lst
+/target/classes/Logo.bmp
+/out/production/MainModule/README.md
+/out/production/MainModule/.gitignore
+*.properties
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
 # Package Files #
-/out/production/MainModule/README.md
-/out/production/MainModule/.gitignore
 *.jar
 *.war
 *.ear
