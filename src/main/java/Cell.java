@@ -50,6 +50,13 @@ public abstract class Cell extends Entity
     public void draw( Graphics2D g2d )
     {
         g2d.setPaint( this.getColor() );
-        g2d.draw( new Ellipse2D.Double( this.getLocation().getX(), this.getLocation().getY(), getMass(), getMass() ) );
+        g2d.draw( new Ellipse2D.Double( this.getDrawLocation().getX(), this.getDrawLocation().getY(), getMass(), getMass() ) );
+    }
+
+    @Override
+    public void calculateAndSetCenterVector()
+    {
+        this.getCenterLocation().setX( this.getDrawLocation().getX() + getMass() / 2 );
+        this.getCenterLocation().setY( this.getDrawLocation().getY() + getMass() / 2 );
     }
 }

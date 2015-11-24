@@ -7,9 +7,12 @@ public abstract class Entity
     private double mass;
     private double speed;
     private Vector direction;
-    private Vector location;
+    private Vector drawLocation;
+    private Vector centerLocation;
 
     public abstract void draw( Graphics2D g2d );
+
+    public abstract void calculateAndSetCenterVector();
 
     public Color getColor()
     {
@@ -61,18 +64,29 @@ public abstract class Entity
         this.direction = direction;
     }
 
-    public Vector getLocation()
+    public Vector getDrawLocation()
     {
-        return location;
+        return drawLocation;
     }
 
-    public void setLocation( Vector location )
+    public void setDrawLocation( Vector drawLocation )
     {
-        this.location = location;
+        this.drawLocation = drawLocation;
     }
 
     public void step()
     {
         this.getStrategy().step( this );
+        this.calculateAndSetCenterVector();
+    }
+
+    public Vector getCenterLocation()
+    {
+        return centerLocation;
+    }
+
+    public void setCenterLocation( Vector centerLocation )
+    {
+        this.centerLocation = centerLocation;
     }
 }

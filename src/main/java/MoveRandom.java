@@ -22,13 +22,13 @@ public class MoveRandom extends StepStrategy
 
         if ( Math.random() * 2 > 1 )
         {
-            e.getLocation().setX( e.getLocation().getX() + e.getDirection().getX() * e.getSpeed() );
-            e.getLocation().setY( e.getLocation().getY() + e.getDirection().getY() * e.getSpeed() );
+            e.getDrawLocation().setX( e.getDrawLocation().getX() + e.getDirection().getX() * e.getSpeed() );
+            e.getDrawLocation().setY( e.getDrawLocation().getY() + e.getDirection().getY() * e.getSpeed() );
         }
         else
         {
-            e.getLocation().setX( e.getLocation().getX() - e.getDirection().getX() * e.getSpeed() );
-            e.getLocation().setY( e.getLocation().getY() - e.getDirection().getY() * e.getSpeed() );
+            e.getDrawLocation().setX( e.getDrawLocation().getX() - e.getDirection().getX() * e.getSpeed() );
+            e.getDrawLocation().setY( e.getDrawLocation().getY() - e.getDirection().getY() * e.getSpeed() );
         }
     }
 }

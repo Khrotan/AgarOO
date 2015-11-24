@@ -7,13 +7,14 @@ public class OrganismFactory extends FoodFactory
 
         Organism organismToBeCreated = new Organism( radius );
 
-        organismToBeCreated.setMass( Math.random() );
+        organismToBeCreated.setMass( radius / 2 );
         organismToBeCreated.setColor( RandomFactory.generateColor() );
         // TODO: make organism speed a small value
         organismToBeCreated.setSpeed( 1 );
 
-        organismToBeCreated.setLocation( new Vector( env.getRandomFactory().generateDimension() ) );
+        organismToBeCreated.setDrawLocation( new Vector( env.getRandomFactory().generateDimension() ) );
         organismToBeCreated.setDirection( new Vector( env.getRandomFactory().generateDimension() ) );
+        organismToBeCreated.setCenterLocation( new Vector( organismToBeCreated.getDrawLocation().getX() + radius / 2, organismToBeCreated.getDrawLocation().getY() + radius / 2 ) );
 
         StepStrategy stepStrategy = env.generateOrganismStepStrategy( organismToBeCreated );
         organismToBeCreated.setStrategy( stepStrategy );

@@ -11,7 +11,6 @@ public class AgarRunner
     public GameDisplayPanel gameDisplayPanel;
     public ApplicationWindow applicationWindow;
     private BufferedImage logo;
-
     {
         try
         {
@@ -52,9 +51,10 @@ public class AgarRunner
 
         while ( true )
         {
+            agarRunner.getEnvironment().removeEatenFoods();
             agarRunner.getEnvironment().stepAll();
-            agarRunner.applicationWindow.repaint();
-            Thread.sleep( 150 );
+            agarRunner.getApplicationWindow().repaint();
+            Thread.sleep( 50 );
         }
     }
 

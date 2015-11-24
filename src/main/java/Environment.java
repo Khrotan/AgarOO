@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Environment
 {
@@ -61,8 +62,9 @@ public class Environment
     {
         BasicCell basicCellToBeCreated = new BasicCell( getRandomFactory().generateName() );
 
-        basicCellToBeCreated.setLocation( new Vector( getRandomFactory().generateDimension() ) );
+        basicCellToBeCreated.setDrawLocation( new Vector( getRandomFactory().generateDimension() ) );
         basicCellToBeCreated.setDirection( new Vector( getRandomFactory().generateDimension() ) );
+        basicCellToBeCreated.setCenterLocation( new Vector( basicCellToBeCreated.getDrawLocation().getX() + basicCellToBeCreated.getMass() / 2, basicCellToBeCreated.getDrawLocation().getY() + basicCellToBeCreated.getMass() / 2 ) );
 
         StepStrategy stepStrategy = this.generateCellStepStrategy( basicCellToBeCreated );
         basicCellToBeCreated.setStrategy( stepStrategy );
@@ -73,18 +75,19 @@ public class Environment
 
     public void stepAll()
     {
+        //this.removeEatenFoods();
         this.getFoodEntities().forEach( Entity::step );
-        getCellEntities().forEach( Entity::step );
+        this.getCellEntities().forEach( Entity::step );
     }
 
     public void initializeEnvironment( SugarFactory sugarFactory, OrganismFactory organismFactory )
     {
-        for ( int i = 0; i < 2; i++ )
+        for ( int i = 0; i < 25; i++ )
         {
             this.createFood( sugarFactory );
         }
 
-        for ( int i = 0; i < 2; i++ )
+        for ( int i = 0; i < 25; i++ )
         {
             this.createFood( organismFactory );
         }
@@ -102,13 +105,34 @@ public class Environment
 
         for ( Entity food : getFoodEntities() )
         {
-            if ( cell.getLocation().distanceTo( food.getLocation() ) < minDist )
+            if ( cell.getCenterLocation().distanceTo( food.getCenterLocation() ) < minDist )
             {
-                minDist = cell.getLocation().distanceTo( food.getLocation() );
+                minDist = cell.getCenterLocation().distanceTo( food.getCenterLocation() );
                 nearestFood = food;
             }
         }
         return (Food) nearestFood;
+    }
+
+    public void removeEatenFoods()
+    {
+        for ( Iterator<Entity> cellIterator = getCellEntities().iterator(); cellIterator.hasNext(); )
+        {
+            Cell cell = (Cell) cellIterator.next();
+            for ( Iterator<Entity> foodIterator = getFoodEntities().iterator(); foodIterator.hasNext(); )
+            {
+                Entity food = foodIterator.next();
+
+                double distance = cell.getCenterLocation().distanceTo( food.getCenterLocation() );
+                //TODO: arrange according to mass/radius
+                if ( distance < cell.getMass() / 2 )
+                {
+                    // Remove the current element from the iterator and the list.
+                    cell.addMass( food.getMass() );
+                    foodIterator.remove();
+                }
+            }
+        }
     }
 
     public int getWindowWidth()

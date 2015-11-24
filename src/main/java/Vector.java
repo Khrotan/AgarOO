@@ -28,7 +28,7 @@ public class Vector
 
     public double distanceTo( Vector other )
     {
-        return Math.sqrt( Math.pow( other.x - this.x, 2 ) + Math.pow( other.y - this.y, 2 ) );
+        return Math.sqrt( Math.pow( other.getX() - this.getX(), 2 ) + Math.pow( other.getY() - this.getY(), 2 ) );
     }
 
     public double getX()

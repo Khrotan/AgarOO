@@ -1,6 +1,6 @@
 public class GrabFood extends StepStrategy
 {
-    Food nearestFood;
+    Food nearestFood = null;
     Environment environment;
 
     public GrabFood( Environment env )
@@ -10,14 +10,29 @@ public class GrabFood extends StepStrategy
     }
 
 
-    public void arrangeCellDirection( Entity cell, Environment environment )
+    public void forwardCellDirectionToNearestFood( Entity cell, Environment environment )
     {
-        nearestFood = environment.getNearestFood( cell );
+        if ( nearestFood == null )
+        {
+            nearestFood = environment.getNearestFood( cell );
 
-        Vector newDirectionVector = new Vector( nearestFood.getLocation().getX() - cell.getLocation().getX(), nearestFood.getLocation().getY() - cell.getLocation().getY() );
-        newDirectionVector.normalize();
+            Vector newDirectionVector = new Vector( nearestFood.getCenterLocation().getX() - cell.getCenterLocation().getX(), nearestFood.getCenterLocation().getY() - cell.getCenterLocation().getY() );
+            newDirectionVector.normalize();
 
-        cell.setDirection( newDirectionVector );
+            cell.setDirection( newDirectionVector );
+        }
+
+        Food candidateNearestFood = environment.getNearestFood( cell );
+
+        if ( nearestFood.hashCode() != candidateNearestFood.hashCode() )
+        {
+            nearestFood = environment.getNearestFood( cell );
+
+            Vector newDirectionVector = new Vector( nearestFood.getCenterLocation().getX() - cell.getCenterLocation().getX(), nearestFood.getCenterLocation().getY() - cell.getCenterLocation().getY() );
+            newDirectionVector.normalize();
+
+            cell.setDirection( newDirectionVector );
+        }
     }
 
     @Override
@@ -31,9 +46,9 @@ public class GrabFood extends StepStrategy
     {
         super.setNumberOfTurns( super.getNumberOfTurns() - 1 );
 
-        arrangeCellDirection( e, environment );
+        forwardCellDirectionToNearestFood( e, environment );
 
-        e.getLocation().setX( e.getLocation().getX() + e.getDirection().getX() * e.getSpeed() );
-        e.getLocation().setY( e.getLocation().getY() + e.getDirection().getY() * e.getSpeed() );
+        e.getDrawLocation().setX( e.getDrawLocation().getX() + e.getDirection().getX() * e.getSpeed() );
+        e.getDrawLocation().setY( e.getDrawLocation().getY() + e.getDirection().getY() * e.getSpeed() );
     }
 }

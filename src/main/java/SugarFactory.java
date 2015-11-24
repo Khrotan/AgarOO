@@ -9,13 +9,14 @@ public class SugarFactory extends FoodFactory
         Sugar sugarToBeCreated = new Sugar();
 
         //TODO: choose a mass value
-        sugarToBeCreated.setMass( Math.random() * 60 );
+        sugarToBeCreated.setMass( env.getRandomFactory().generateNumberBetween( 4, 6 ) );
         sugarToBeCreated.setColor( RandomFactory.generateColor() );
         sugarToBeCreated.setSpeed( 0 );
-        sugarToBeCreated.setSideHalfLength( env.getRandomFactory().generateNumberBetween( 8, 12 ) );
+        sugarToBeCreated.setSideHalfLength( (int) ( sugarToBeCreated.getMass() * 2 ) );
 
-        sugarToBeCreated.setLocation( new Vector( env.getRandomFactory().generateDimension() ) );
+        sugarToBeCreated.setDrawLocation( new Vector( env.getRandomFactory().generateDimension() ) );
         sugarToBeCreated.setDirection( new Vector( env.getRandomFactory().generateDimension() ) );
+        sugarToBeCreated.setCenterLocation( new Vector( sugarToBeCreated.getDrawLocation().getX() + sugarToBeCreated.getSideHalfLength() / 2, sugarToBeCreated.getDrawLocation().getY() + sugarToBeCreated.getSideHalfLength() / 2 ) );
 
         StepStrategy stepStrategy = env.generateSugarStepStrategy( sugarToBeCreated );
         sugarToBeCreated.setStrategy( stepStrategy );
