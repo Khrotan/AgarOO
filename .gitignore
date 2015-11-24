@@ -5,6 +5,7 @@
 *.lst
 /target/classes/Logo.bmp
 /out/production/MainModule/README.md
+/out/production/MainModule/CENG443/AgarOO/Logo.bmp
 /out/production/MainModule/.gitignore
 *.properties
 
