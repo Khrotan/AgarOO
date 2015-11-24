@@ -73,21 +73,23 @@ public class Environment
         return basicCellToBeCreated;
     }
 
+
     public void stepAll()
     {
-        //this.removeEatenFoods();
+        this.removeEatenFoods();
+        this.removeEatenCells();
         this.getFoodEntities().forEach( Entity::step );
         this.getCellEntities().forEach( Entity::step );
     }
 
     public void initializeEnvironment( SugarFactory sugarFactory, OrganismFactory organismFactory )
     {
-        for ( int i = 0; i < 25; i++ )
+        for ( int i = 0; i < 20; i++ )
         {
             this.createFood( sugarFactory );
         }
 
-        for ( int i = 0; i < 25; i++ )
+        for ( int i = 0; i < 20; i++ )
         {
             this.createFood( organismFactory );
         }
@@ -112,6 +114,36 @@ public class Environment
             }
         }
         return (Food) nearestFood;
+    }
+
+    public void removeEatenCells()
+    {
+        ArrayList<Cell> toBeDeletedCells = new ArrayList<>();
+
+        for ( int i = 0; i < getCellEntities().size(); i++ )
+        {
+            Cell cell1 = (Cell) getCellEntities().get( i );
+            for ( int j = i + 1; j < getCellEntities().size(); j++ )
+            {
+                Cell cell2 = (Cell) getCellEntities().get( j );
+
+                double distance = cell1.getCenterLocation().distanceTo( cell2.getCenterLocation() );
+                //TODO: arrange according to mass/radius
+                if ( distance < cell1.getMass() / 3 * 2 )
+                {
+                    if ( cell1.getMass() < cell2.getMass() / 2 )
+                    {
+                        cell2.addMass( cell1.getMass() );
+                        toBeDeletedCells.add( cell1 );
+                    }
+                }
+            }
+        }
+
+        for ( Cell cell : toBeDeletedCells )
+        {
+            getCellEntities().remove( cell );
+        }
     }
 
     public void removeEatenFoods()

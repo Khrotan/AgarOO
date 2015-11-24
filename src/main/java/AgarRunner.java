@@ -51,7 +51,6 @@ public class AgarRunner
 
         while ( true )
         {
-            agarRunner.getEnvironment().removeEatenFoods();
             agarRunner.getEnvironment().stepAll();
             agarRunner.getApplicationWindow().repaint();
             Thread.sleep( 50 );

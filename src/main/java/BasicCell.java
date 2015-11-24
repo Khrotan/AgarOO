@@ -20,6 +20,7 @@ public class BasicCell extends Cell
     public void draw( Graphics2D g2d )
     {
         g2d.setPaint( this.getColor() );
+        // TODO: choose an appropriate algorithm for radius
         g2d.fill( new Ellipse2D.Double( getDrawLocation().getX(), getDrawLocation().getY(), getMass(), getMass() ) );
         g2d.setPaint( new Color( this.getColor().getRGB() ) );
         g2d.drawString( this.getName(), (int) getDrawLocation().getX(), (int) getDrawLocation().getY() );
