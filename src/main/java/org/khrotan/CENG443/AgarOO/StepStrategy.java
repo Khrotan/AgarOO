@@ -1,3 +1,5 @@
+package org.khrotan.CENG443.AgarOO;
+
 public abstract class StepStrategy
 {
     private int numberOfTurns;

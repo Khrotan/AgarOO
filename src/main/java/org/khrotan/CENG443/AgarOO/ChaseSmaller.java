@@ -1,8 +1,8 @@
+package org.khrotan.CENG443.AgarOO;
 
-
-public class AvoidLarger extends StepStrategy
+public class ChaseSmaller extends StepStrategy
 {
-    public AvoidLarger()
+    public ChaseSmaller()
     {
 
     }

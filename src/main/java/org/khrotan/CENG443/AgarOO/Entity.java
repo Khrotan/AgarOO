@@ -1,3 +1,5 @@
+package org.khrotan.CENG443.AgarOO;
+
 import java.awt.*;
 
 abstract class Entity

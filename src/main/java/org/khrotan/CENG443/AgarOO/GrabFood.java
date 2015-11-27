@@ -1,3 +1,5 @@
+package org.khrotan.CENG443.AgarOO;
+
 public class GrabFood extends StepStrategy
 {
     private final Environment environment;
@@ -38,7 +40,7 @@ public class GrabFood extends StepStrategy
     @Override
     public String getName()
     {
-        return "GrabFood";
+        return "org.khrotan.CENG443.AgarOO.GrabFood";
     }
 
     @Override

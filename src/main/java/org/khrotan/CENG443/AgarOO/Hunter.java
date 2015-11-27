@@ -1,8 +1,10 @@
+package org.khrotan.CENG443.AgarOO;
+
 import java.awt.*;
 
-public class Roamer extends CellDecorator
+public class Hunter extends CellDecorator
 {
-    public Roamer( Cell cell )
+    public Hunter( Cell cell )
     {
         super( cell );
     }

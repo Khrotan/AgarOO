@@ -1,3 +1,5 @@
+package org.khrotan.CENG443.AgarOO;
+
 public class StandStill extends StepStrategy
 {
     public StandStill( Entity entity )
@@ -10,7 +12,7 @@ public class StandStill extends StepStrategy
     @Override
     public String getName()
     {
-        return "StandStill";
+        return "org.khrotan.CENG443.AgarOO.StandStill";
     }
 
     @Override

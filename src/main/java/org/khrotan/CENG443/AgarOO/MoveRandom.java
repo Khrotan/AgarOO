@@ -1,3 +1,5 @@
+package org.khrotan.CENG443.AgarOO;
+
 public class MoveRandom extends StepStrategy
 {
     public MoveRandom()
@@ -8,7 +10,7 @@ public class MoveRandom extends StepStrategy
     @Override
     public String getName()
     {
-        return "MoveRandom";
+        return "org.khrotan.CENG443.AgarOO.MoveRandom";
     }
 
     @Override

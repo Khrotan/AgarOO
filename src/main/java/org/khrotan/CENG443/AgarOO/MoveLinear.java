@@ -1,3 +1,5 @@
+package org.khrotan.CENG443.AgarOO;
+
 public class MoveLinear extends StepStrategy
 {
     public MoveLinear( Entity e )
@@ -17,7 +19,7 @@ public class MoveLinear extends StepStrategy
     @Override
     public String getName()
     {
-        return "MoveLinear";
+        return "org.khrotan.CENG443.AgarOO.MoveLinear";
     }
 
     @Override
