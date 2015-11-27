@@ -1,8 +1,8 @@
 import java.awt.*;
 
-public abstract class Entity
+abstract class Entity
 {
-    public StepStrategy strategy;
+    private StepStrategy strategy;
     private Color color;
     private double mass;
     private double speed;
@@ -12,9 +12,9 @@ public abstract class Entity
 
     public abstract void draw( Graphics2D g2d );
 
-    public abstract void calculateAndSetCenterVector();
+    protected abstract void calculateAndSetCenterVector();
 
-    public Color getColor()
+    Color getColor()
     {
         return color;
     }
@@ -44,7 +44,7 @@ public abstract class Entity
         this.speed = speed;
     }
 
-    public StepStrategy getStrategy()
+    private StepStrategy getStrategy()
     {
         return strategy;
     }

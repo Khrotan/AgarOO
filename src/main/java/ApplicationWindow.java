@@ -2,11 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class ApplicationWindow extends JFrame
+class ApplicationWindow extends JFrame
 {
-    public LogoPanel logoPanel;
-    public InformationPanel informationPanel;
-    public GameDisplayPanel gameDisplayPanel;
+    private LogoPanel logoPanel;
+    private InformationPanel informationPanel;
+    private GameDisplayPanel gameDisplayPanel;
 
     public ApplicationWindow( LogoPanel logoPanel, InformationPanel informationPanel, GameDisplayPanel gameDisplayPanel ) throws HeadlessException
     {
@@ -40,7 +40,7 @@ public class ApplicationWindow extends JFrame
         return logoPanel;
     }
 
-    public void setLogoPanel( LogoPanel logoPanel )
+    private void setLogoPanel( LogoPanel logoPanel )
     {
         this.logoPanel = logoPanel;
     }
@@ -50,7 +50,7 @@ public class ApplicationWindow extends JFrame
         return informationPanel;
     }
 
-    public void setInformationPanel( InformationPanel informationPanel )
+    private void setInformationPanel( InformationPanel informationPanel )
     {
         this.informationPanel = informationPanel;
     }
@@ -60,7 +60,7 @@ public class ApplicationWindow extends JFrame
         return gameDisplayPanel;
     }
 
-    public void setGameDisplayPanel( GameDisplayPanel gameDisplayPanel )
+    private void setGameDisplayPanel( GameDisplayPanel gameDisplayPanel )
     {
         this.gameDisplayPanel = gameDisplayPanel;
     }

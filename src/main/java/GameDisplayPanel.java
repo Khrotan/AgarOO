@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class GameDisplayPanel extends JPanel
 {
-    private Environment environmentReference;
+    private final Environment environmentReference;
 
     public GameDisplayPanel( Environment environment )
     {

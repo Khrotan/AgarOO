@@ -3,14 +3,14 @@ import java.awt.geom.Ellipse2D;
 
 public class Organism extends Food
 {
-    public double radius;
+    private double radius;
 
     public Organism( double radius )
     {
         this.radius = radius;
     }
 
-    public double getRadius()
+    private double getRadius()
     {
         return radius;
     }

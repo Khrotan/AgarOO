@@ -1,6 +1,6 @@
 public class MoveRandom extends StepStrategy
 {
-    public MoveRandom( Entity entity )
+    public MoveRandom()
     {
         super.setNumberOfTurns( RandomFactory.generateStepTurnNumber() );
     }

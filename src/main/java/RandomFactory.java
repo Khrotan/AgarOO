@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class RandomFactory
 {
-    private ArrayList<String> metuCengNames;
-    private int windowWidth;
-    private int windowHeight;
-    private Random random = new Random();
+    private final ArrayList<String> metuCengNames;
+    private final int windowWidth;
+    private final int windowHeight;
+    private final Random random = new Random();
 
     public RandomFactory( int windowWidth, int windowHeight )
     {

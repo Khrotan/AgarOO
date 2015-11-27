@@ -1,7 +1,7 @@
 public class GrabFood extends StepStrategy
 {
-    Food nearestFood = null;
-    Environment environment;
+    private final Environment environment;
+    private Food nearestFood = null;
 
     public GrabFood( Environment env )
     {
@@ -10,7 +10,7 @@ public class GrabFood extends StepStrategy
     }
 
 
-    public void forwardCellDirectionToNearestFood( Entity cell, Environment environment )
+    private void forwardCellDirectionToNearestFood( Entity cell, Environment environment )
     {
         if ( nearestFood == null )
         {

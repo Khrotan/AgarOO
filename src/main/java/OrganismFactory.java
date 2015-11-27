@@ -1,7 +1,7 @@
 public class OrganismFactory extends FoodFactory
 {
     @Override
-    public Food createFood( Environment env )
+    public void createFood( Environment env )
     {
         int radius = env.getRandomFactory().generateNumberBetween( 8, 12 );
 
@@ -9,7 +9,6 @@ public class OrganismFactory extends FoodFactory
 
         organismToBeCreated.setMass( radius / 2 );
         organismToBeCreated.setColor( RandomFactory.generateColor() );
-        // TODO: make organism speed a small value
         organismToBeCreated.setSpeed( 1 );
 
         organismToBeCreated.setDrawLocation( new Vector( env.getRandomFactory().generateDimension() ) );
@@ -20,6 +19,5 @@ public class OrganismFactory extends FoodFactory
         organismToBeCreated.setStrategy( stepStrategy );
 
         env.getFoodEntities().add( organismToBeCreated );
-        return organismToBeCreated;
     }
 }

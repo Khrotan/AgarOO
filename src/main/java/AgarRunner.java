@@ -3,13 +3,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class AgarRunner
+class AgarRunner
 {
-    public Environment environment;
-    public LogoPanel logoPanel;
-    public InformationPanel informationPanel;
-    public GameDisplayPanel gameDisplayPanel;
-    public ApplicationWindow applicationWindow;
+    private Environment environment;
+    private LogoPanel logoPanel;
+    private InformationPanel informationPanel;
+    private GameDisplayPanel gameDisplayPanel;
+    private ApplicationWindow applicationWindow;
     private BufferedImage logo;
     {
         try
@@ -22,7 +22,7 @@ public class AgarRunner
         }
     }
 
-    public AgarRunner()
+    private AgarRunner()
     {
         setEnvironment( new Environment( 1024, 768 ) );
 
@@ -57,12 +57,12 @@ public class AgarRunner
         }
     }
 
-    public Environment getEnvironment()
+    private Environment getEnvironment()
     {
         return environment;
     }
 
-    public void setEnvironment( Environment environment )
+    private void setEnvironment( Environment environment )
     {
         this.environment = environment;
     }
@@ -72,47 +72,47 @@ public class AgarRunner
         return logo;
     }
 
-    public void setLogo( BufferedImage logo )
+    private void setLogo( BufferedImage logo )
     {
         this.logo = logo;
     }
 
-    public LogoPanel getLogoPanel()
+    private LogoPanel getLogoPanel()
     {
         return logoPanel;
     }
 
-    public void setLogoPanel( LogoPanel logoPanel )
+    private void setLogoPanel( LogoPanel logoPanel )
     {
         this.logoPanel = logoPanel;
     }
 
-    public InformationPanel getInformationPanel()
+    private InformationPanel getInformationPanel()
     {
         return informationPanel;
     }
 
-    public void setInformationPanel( InformationPanel informationPanel )
+    private void setInformationPanel( InformationPanel informationPanel )
     {
         this.informationPanel = informationPanel;
     }
 
-    public GameDisplayPanel getGameDisplayPanel()
+    private GameDisplayPanel getGameDisplayPanel()
     {
         return gameDisplayPanel;
     }
 
-    public void setGameDisplayPanel( GameDisplayPanel gameDisplayPanel )
+    private void setGameDisplayPanel( GameDisplayPanel gameDisplayPanel )
     {
         this.gameDisplayPanel = gameDisplayPanel;
     }
 
-    public ApplicationWindow getApplicationWindow()
+    private ApplicationWindow getApplicationWindow()
     {
         return applicationWindow;
     }
 
-    public void setApplicationWindow( ApplicationWindow applicationWindow )
+    private void setApplicationWindow( ApplicationWindow applicationWindow )
     {
         this.applicationWindow = applicationWindow;
     }

@@ -1,4 +1,4 @@
-public abstract class FoodFactory
+abstract class FoodFactory
 {
-    public abstract Food createFood( Environment env );
+    public abstract void createFood( Environment env );
 }

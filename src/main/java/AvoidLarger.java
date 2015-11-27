@@ -2,7 +2,7 @@
 
 public class AvoidLarger extends StepStrategy
 {
-    public AvoidLarger( Object o )
+    public AvoidLarger()
     {
 
     }

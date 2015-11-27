@@ -16,7 +16,7 @@ public class InformationPanel extends JPanel
         return null;
     }
 
-    public void RefreshInformation()
+    public void refreshInformation()
     {
 
     }

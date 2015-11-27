@@ -2,22 +2,12 @@
 *.xml
 *.iml
 *.name
-*.lst
 /target/classes/Logo.bmp
 /out/production/MainModule/README.md
 /out/production/MainModule/CENG443/AgarOO/Logo.bmp
 /out/production/MainModule/.gitignore
-*.properties
-
 # Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
 # Package Files #
-*.jar
-*.war
-*.ear
-
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
 !/pom.xml
 /ShapesDemo2D.java

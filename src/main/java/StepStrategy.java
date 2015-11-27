@@ -1,6 +1,6 @@
 public abstract class StepStrategy
 {
-    protected int numberOfTurns;
+    private int numberOfTurns;
 
     public boolean isFinished()
     {
@@ -11,12 +11,12 @@ public abstract class StepStrategy
 
     public abstract void step( Entity e );
 
-    public int getNumberOfTurns()
+    int getNumberOfTurns()
     {
         return numberOfTurns;
     }
 
-    public void setNumberOfTurns( int numberOfTurns )
+    void setNumberOfTurns( int numberOfTurns )
     {
         this.numberOfTurns = numberOfTurns;
     }

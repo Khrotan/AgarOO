@@ -3,18 +3,18 @@ import java.awt.geom.Ellipse2D;
 
 public abstract class Cell extends Entity
 {
-    public String name;
-    public int foodEaten;
-    public int cellsSwallowed;
+    private String name;
+    private int foodEaten;
+    private int cellsSwallowed;
 
     public void addMass( double additionalMass )
     {
         super.setMass( super.getMass() + additionalMass );
     }
 
-    public void removeMass( double reductionalMass )
+    public void removeMass( double toBeDeletedMass )
     {
-        super.setMass( super.getMass() - reductionalMass );
+        super.setMass( super.getMass() - toBeDeletedMass );
     }
 
     public String getName()
@@ -22,7 +22,7 @@ public abstract class Cell extends Entity
         return name;
     }
 
-    public void setName( String name )
+    void setName( String name )
     {
         this.name = name;
     }
@@ -42,7 +42,7 @@ public abstract class Cell extends Entity
         return cellsSwallowed;
     }
 
-    public void setCellsSwallowed( int cellsSwallowed )
+    void setCellsSwallowed( int cellsSwallowed )
     {
         this.cellsSwallowed = cellsSwallowed;
     }

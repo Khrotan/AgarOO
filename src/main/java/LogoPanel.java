@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class LogoPanel extends JPanel
 {
-    public BufferedImage logo;
+    private final BufferedImage logo;
 
     public LogoPanel( Environment env, BufferedImage logo )
     {
@@ -14,11 +14,6 @@ public class LogoPanel extends JPanel
         this.setSize( 256, 384 );
         this.setBackground( Color.black );
         this.setBounds( 0, 384, 256, 384 );
-    }
-
-    public Dimension getPreferredSize()
-    {
-        return null;
     }
 
     @Override

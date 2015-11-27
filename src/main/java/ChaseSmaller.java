@@ -1,6 +1,6 @@
 public class ChaseSmaller extends StepStrategy
 {
-    public ChaseSmaller( Object o )
+    public ChaseSmaller()
     {
 
     }

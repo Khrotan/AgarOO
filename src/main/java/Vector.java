@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class Vector
 {
-    public double x;
-    public double y;
+    private double x;
+    private double y;
 
     public Vector( double x, double y )
     {

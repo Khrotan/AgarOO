@@ -2,9 +2,8 @@
 
 public class SugarFactory extends FoodFactory
 {
-
     @Override
-    public Food createFood( Environment env )
+    public void createFood( Environment env )
     {
         Sugar sugarToBeCreated = new Sugar();
 
@@ -22,6 +21,5 @@ public class SugarFactory extends FoodFactory
         sugarToBeCreated.setStrategy( stepStrategy );
 
         env.getFoodEntities().add( sugarToBeCreated );
-        return sugarToBeCreated;
     }
 }

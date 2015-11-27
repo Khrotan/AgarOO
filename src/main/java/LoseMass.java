@@ -1,6 +1,6 @@
 public class LoseMass extends StepStrategy
 {
-    public double losePercantage;
+    private double losePercentage;
 
     public LoseMass( Object o )
     {
@@ -17,5 +17,15 @@ public class LoseMass extends StepStrategy
     public void step( Entity e )
     {
 
+    }
+
+    public double getLosePercentage()
+    {
+        return losePercentage;
+    }
+
+    public void setLosePercentage( double losePercentage )
+    {
+        this.losePercentage = losePercentage;
     }
 }
