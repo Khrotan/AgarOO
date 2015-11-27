@@ -1,18 +1,19 @@
-package org.khrotan.CENG443.AgarOO;
+package org.khrotan.CENG443.AgarOO.StepStrategies;
+
+import org.khrotan.CENG443.AgarOO.Entity;
+import org.khrotan.CENG443.AgarOO.RandomFactory;
 
 public class StandStill extends StepStrategy
 {
     public StandStill( Entity entity )
     {
         super.setNumberOfTurns( RandomFactory.generateStepTurnNumber() );
-        entity.setSpeed( 0 );
-        entity.setStrategy( this );
     }
 
     @Override
     public String getName()
     {
-        return "org.khrotan.CENG443.AgarOO.StandStill";
+        return "org.khrotan.CENG443.AgarOO.StepStrategy.StandStill";
     }
 
     @Override

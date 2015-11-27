@@ -1,4 +1,8 @@
-package org.khrotan.CENG443.AgarOO;
+package org.khrotan.CENG443.AgarOO.StepStrategies;
+
+import org.khrotan.CENG443.AgarOO.Entity;
+import org.khrotan.CENG443.AgarOO.RandomFactory;
+import org.khrotan.CENG443.AgarOO.Vector;
 
 public class MoveRandom extends StepStrategy
 {
@@ -10,7 +14,7 @@ public class MoveRandom extends StepStrategy
     @Override
     public String getName()
     {
-        return "org.khrotan.CENG443.AgarOO.MoveRandom";
+        return "MoveRandom";
     }
 
     @Override

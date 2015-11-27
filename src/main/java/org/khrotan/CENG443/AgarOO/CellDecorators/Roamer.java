@@ -1,4 +1,6 @@
-package org.khrotan.CENG443.AgarOO;
+package org.khrotan.CENG443.AgarOO.CellDecorators;
+
+import org.khrotan.CENG443.AgarOO.Cell;
 
 import java.awt.*;
 

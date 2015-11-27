@@ -1,4 +1,6 @@
-package org.khrotan.CENG443.AgarOO;
+package org.khrotan.CENG443.AgarOO.StepStrategies;
+
+import org.khrotan.CENG443.AgarOO.*;
 
 public class GrabFood extends StepStrategy
 {
@@ -40,7 +42,7 @@ public class GrabFood extends StepStrategy
     @Override
     public String getName()
     {
-        return "org.khrotan.CENG443.AgarOO.GrabFood";
+        return "GrabFood";
     }
 
     @Override

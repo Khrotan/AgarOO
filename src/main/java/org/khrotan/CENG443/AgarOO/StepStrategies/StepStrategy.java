@@ -1,4 +1,6 @@
-package org.khrotan.CENG443.AgarOO;
+package org.khrotan.CENG443.AgarOO.StepStrategies;
+
+import org.khrotan.CENG443.AgarOO.Entity;
 
 public abstract class StepStrategy
 {

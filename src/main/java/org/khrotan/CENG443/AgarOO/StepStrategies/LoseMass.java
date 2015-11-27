@@ -1,4 +1,7 @@
-package org.khrotan.CENG443.AgarOO;
+package org.khrotan.CENG443.AgarOO.StepStrategies;
+
+import org.khrotan.CENG443.AgarOO.Entity;
+import org.khrotan.CENG443.AgarOO.RandomFactory;
 
 public class LoseMass extends StepStrategy
 {
@@ -6,7 +9,7 @@ public class LoseMass extends StepStrategy
 
     public LoseMass( Object o )
     {
-
+        super.setNumberOfTurns( RandomFactory.generateStepTurnNumber() );
     }
 
     @Override
@@ -18,7 +21,7 @@ public class LoseMass extends StepStrategy
     @Override
     public void step( Entity e )
     {
-
+        super.setNumberOfTurns( super.getNumberOfTurns() - 1 );
     }
 
     public double getLosePercentage()

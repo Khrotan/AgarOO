@@ -28,7 +28,7 @@ class AgarRunner
     {
         setEnvironment( new Environment( 1024, 768 ) );
 
-        setLogoPanel( new LogoPanel( environment, logo ) );
+        setLogoPanel( new LogoPanel( logo ) );
         setInformationPanel( new InformationPanel( getEnvironment() ) );
         setGameDisplayPanel( new GameDisplayPanel( getEnvironment() ) );
 

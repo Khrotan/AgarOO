@@ -9,7 +9,7 @@ public class LogoPanel extends JPanel
 {
     private final BufferedImage logo;
 
-    public LogoPanel( Environment env, BufferedImage logo )
+    public LogoPanel( BufferedImage logo )
     {
         this.logo = logo;
         //TODO: choose appropriate value

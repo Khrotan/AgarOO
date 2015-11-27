@@ -1,14 +1,19 @@
 package org.khrotan.CENG443.AgarOO;
 
+import org.khrotan.CENG443.AgarOO.CellDecorators.Evader;
+import org.khrotan.CENG443.AgarOO.CellDecorators.Roamer;
+import org.khrotan.CENG443.AgarOO.StepStrategies.*;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
-class Environment
+@SuppressWarnings("ALL")
+public class Environment
 {
     private int windowWidth;
     private int windowHeight;
-    private ArrayList<Entity> foodEntities;
-    private ArrayList<Entity> cellEntities;
+    private ArrayList<Food> foodEntities;
+    private ArrayList<Cell> cellEntities;
     private RandomFactory randomFactory;
     private int numberOfSteps;
 
@@ -105,6 +110,8 @@ class Environment
                 candidateStrategy = new LoseMass( cell );
             }
         }
+
+        cell.setStrategy( candidateStrategy );
         return candidateStrategy;
     }
 
@@ -131,10 +138,24 @@ class Environment
     public void stepAll()
     {
         this.setNumberOfSteps( this.getNumberOfSteps() + 1 );
+
+        this.changeStrategies();
+
         this.removeEatenFoods();
         this.removeEatenCells();
         this.getFoodEntities().forEach( Entity::step );
         this.getCellEntities().forEach( Entity::step );
+    }
+
+    private void changeStrategies()
+    {
+        for ( Cell cell : getCellEntities() )
+        {
+            if ( cell.getStrategy().isFinished() )
+            {
+                this.generateCellStepStrategy( cell );
+            }
+        }
     }
 
     public void initializeEnvironment( SugarFactory sugarFactory, OrganismFactory organismFactory )
@@ -212,10 +233,10 @@ class Environment
 
     private void removeEatenFoods()
     {
-        for ( Iterator<Entity> cellIterator = getCellEntities().iterator(); cellIterator.hasNext(); )
+        for ( Iterator<Cell> cellIterator = getCellEntities().iterator(); cellIterator.hasNext(); )
         {
             Cell cell = (Cell) cellIterator.next();
-            for ( Iterator<Entity> foodIterator = getFoodEntities().iterator(); foodIterator.hasNext(); )
+            for ( Iterator<Food> foodIterator = getFoodEntities().iterator(); foodIterator.hasNext(); )
             {
                 Entity food = foodIterator.next();
 
@@ -252,12 +273,12 @@ class Environment
         this.windowHeight = windowHeight;
     }
 
-    public ArrayList<Entity> getFoodEntities()
+    public ArrayList<Food> getFoodEntities()
     {
         return foodEntities;
     }
 
-    private void setFoodEntities( ArrayList<Entity> foodEntities )
+    private void setFoodEntities( ArrayList<Food> foodEntities )
     {
         this.foodEntities = foodEntities;
     }
@@ -272,22 +293,22 @@ class Environment
         this.randomFactory = randomFactory;
     }
 
-    public ArrayList<Entity> getCellEntities()
+    public ArrayList<Cell> getCellEntities()
     {
         return cellEntities;
     }
 
-    private void setCellEntities( ArrayList<Entity> cellEntities )
+    private void setCellEntities( ArrayList<Cell> cellEntities )
     {
         this.cellEntities = cellEntities;
     }
 
-    public int getNumberOfSteps()
+    private int getNumberOfSteps()
     {
         return numberOfSteps;
     }
 
-    public void setNumberOfSteps( int numberOfSteps )
+    private void setNumberOfSteps( int numberOfSteps )
     {
         this.numberOfSteps = numberOfSteps;
     }

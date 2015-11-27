@@ -1,8 +1,10 @@
 package org.khrotan.CENG443.AgarOO;
 
+import org.khrotan.CENG443.AgarOO.StepStrategies.StepStrategy;
+
 import java.awt.*;
 
-abstract class Entity
+public abstract class Entity
 {
     private StepStrategy strategy;
     private Color color;
@@ -46,7 +48,7 @@ abstract class Entity
         this.speed = speed;
     }
 
-    private StepStrategy getStrategy()
+    StepStrategy getStrategy()
     {
         return strategy;
     }

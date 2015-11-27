@@ -1,5 +1,7 @@
 package org.khrotan.CENG443.AgarOO;
 
+import org.khrotan.CENG443.AgarOO.StepStrategies.StepStrategy;
+
 public class OrganismFactory extends FoodFactory
 {
     @Override
