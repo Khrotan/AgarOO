@@ -1,4 +1,6 @@
-package org.khrotan.CENG443.AgarOO;
+package org.khrotan.CENG443.AgarOO.Panels;
+
+import org.khrotan.CENG443.AgarOO.Constants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,9 +15,9 @@ public class LogoPanel extends JPanel
     {
         this.logo = logo;
         //TODO: choose appropriate value
-        this.setSize( 256, 384 );
+        this.setSize( Constants.LEFT_PANEL_WIDTH, Constants.WINDOWS_HEIGHT / 2 );
         this.setBackground( Color.black );
-        this.setBounds( 0, 384, 256, 384 );
+        this.setBounds( 0, Constants.WINDOWS_HEIGHT / 2, Constants.LEFT_PANEL_WIDTH, Constants.WINDOWS_HEIGHT / 2 );
     }
 
     @Override

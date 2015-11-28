@@ -1,8 +1,9 @@
 package org.khrotan.CENG443.AgarOO.StepStrategies;
 
-import org.khrotan.CENG443.AgarOO.Entity;
-import org.khrotan.CENG443.AgarOO.RandomFactory;
-import org.khrotan.CENG443.AgarOO.Vector;
+import org.khrotan.CENG443.AgarOO.Constants;
+import org.khrotan.CENG443.AgarOO.Entities.Entity;
+import org.khrotan.CENG443.AgarOO.Entities.Vector;
+import org.khrotan.CENG443.AgarOO.Factories.RandomFactory;
 
 public class MoveLinear extends StepStrategy
 {
@@ -23,7 +24,7 @@ public class MoveLinear extends StepStrategy
     @Override
     public String getName()
     {
-        return "MoveLinear";
+        return "ML";
     }
 
     @Override
@@ -33,5 +34,23 @@ public class MoveLinear extends StepStrategy
 
         e.getDrawLocation().setX( e.getDrawLocation().getX() + e.getDirection().getX() * e.getSpeed() );
         e.getDrawLocation().setY( e.getDrawLocation().getY() + e.getDirection().getY() * e.getSpeed() );
+
+        //TODO: arrange according to radius
+        if ( e.getDrawLocation().getX() < Constants.WINDOWS_WIDTH && e.getDrawLocation().getX() < 0 )
+        {
+            e.getDirection().setX( -1 * e.getDirection().getX() );
+        }
+        if ( e.getDrawLocation().getX() + e.getMass() > 800 && e.getDirection().getX() > 0 )
+        {
+            e.getDirection().setX( -1 * e.getDirection().getX() );
+        }
+        if ( e.getDrawLocation().getY() < 0 && e.getDirection().getY() < 0 )
+        {
+            e.getDirection().setY( -1 * e.getDirection().getY() );
+        }
+        if ( e.getDrawLocation().getY() + e.getMass() > Constants.WINDOWS_HEIGHT && e.getDirection().getY() > 0 )
+        {
+            e.getDirection().setY( -1 * e.getDirection().getY() );
+        }
     }
 }

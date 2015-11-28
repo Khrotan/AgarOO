@@ -1,6 +1,6 @@
 package org.khrotan.CENG443.AgarOO.StepStrategies;
 
-import org.khrotan.CENG443.AgarOO.Entity;
+import org.khrotan.CENG443.AgarOO.Entities.Entity;
 
 public abstract class StepStrategy
 {
@@ -15,7 +15,7 @@ public abstract class StepStrategy
 
     public abstract void step( Entity e );
 
-    int getNumberOfTurns()
+    public int getNumberOfTurns()
     {
         return numberOfTurns;
     }

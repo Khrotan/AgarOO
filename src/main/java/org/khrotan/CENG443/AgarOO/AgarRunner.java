@@ -1,5 +1,9 @@
 package org.khrotan.CENG443.AgarOO;
 
+import org.khrotan.CENG443.AgarOO.Panels.GameDisplayPanel;
+import org.khrotan.CENG443.AgarOO.Panels.InformationPanel;
+import org.khrotan.CENG443.AgarOO.Panels.LogoPanel;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,6 +17,7 @@ class AgarRunner
     private GameDisplayPanel gameDisplayPanel;
     private ApplicationWindow applicationWindow;
     private BufferedImage logo;
+
     {
         try
         {
@@ -26,9 +31,9 @@ class AgarRunner
 
     private AgarRunner()
     {
-        setEnvironment( new Environment( 1024, 768 ) );
+        setEnvironment( new Environment( Constants.WINDOWS_WIDTH, Constants.WINDOWS_HEIGHT ) );
 
-        setLogoPanel( new LogoPanel( logo ) );
+        setLogoPanel( new LogoPanel( this.getLogo() ) );
         setInformationPanel( new InformationPanel( getEnvironment() ) );
         setGameDisplayPanel( new GameDisplayPanel( getEnvironment() ) );
 
@@ -46,16 +51,13 @@ class AgarRunner
         AgarRunner agarRunner;
         agarRunner = new AgarRunner();
 
-        SugarFactory sugarFactory = new SugarFactory();
-        OrganismFactory organismFactory = new OrganismFactory();
-
-        agarRunner.getEnvironment().initializeEnvironment( sugarFactory, organismFactory );
+        agarRunner.getEnvironment().initializeEnvironment();
 
         while ( true )
         {
             agarRunner.getEnvironment().stepAll();
             agarRunner.getApplicationWindow().repaint();
-            Thread.sleep( 50 );
+            Thread.sleep( Constants.THREAD_SLEEP_RATE );
         }
     }
 

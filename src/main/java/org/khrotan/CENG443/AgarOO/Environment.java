@@ -1,19 +1,25 @@
 package org.khrotan.CENG443.AgarOO;
 
 import org.khrotan.CENG443.AgarOO.CellDecorators.Evader;
+import org.khrotan.CENG443.AgarOO.CellDecorators.Hunter;
 import org.khrotan.CENG443.AgarOO.CellDecorators.Roamer;
+import org.khrotan.CENG443.AgarOO.Entities.*;
+import org.khrotan.CENG443.AgarOO.Factories.FoodFactory;
+import org.khrotan.CENG443.AgarOO.Factories.OrganismFactory;
+import org.khrotan.CENG443.AgarOO.Factories.RandomFactory;
+import org.khrotan.CENG443.AgarOO.Factories.SugarFactory;
 import org.khrotan.CENG443.AgarOO.StepStrategies.*;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-@SuppressWarnings("ALL")
 public class Environment
 {
+    SugarFactory sugarFactory;
+    OrganismFactory organismFactory;
     private int windowWidth;
     private int windowHeight;
-    private ArrayList<Food> foodEntities;
-    private ArrayList<Cell> cellEntities;
+    private volatile ArrayList<Food> foodEntities;
+    private volatile ArrayList<Cell> cellEntities;
     private RandomFactory randomFactory;
     private int numberOfSteps;
 
@@ -25,7 +31,10 @@ public class Environment
         setFoodEntities( new ArrayList<>() );
         setCellEntities( new ArrayList<>() );
 
-        setRandomFactory( new RandomFactory( windowWidth, windowHeight ) );
+        setRandomFactory( new RandomFactory() );
+
+        setSugarFactory( new SugarFactory() );
+        setOrganismFactory( new OrganismFactory() );
     }
 
     public StepStrategy generateSugarStepStrategy( Entity sugar )
@@ -53,7 +62,84 @@ public class Environment
 
         double randomNum = Math.random();
 
-        if ( cell instanceof BasicCell )
+        if ( cell instanceof Hunter )
+        {
+            if ( randomNum * 7 > 6 )
+            {
+                candidateStrategy = new StandStill( cell );
+            }
+            else if ( randomNum * 7 > 5 )
+            {
+                candidateStrategy = new MoveRandom();
+            }
+            else if ( randomNum * 7 > 4 )
+            {
+                candidateStrategy = new MoveLinear( cell );
+            }
+            else if ( randomNum * 7 > 3 )
+            {
+                candidateStrategy = new AvoidLarger( cell );
+            }
+            else if ( randomNum * 7 > 2 )
+            {
+                candidateStrategy = new GrabFood( this );
+            }
+            else if ( randomNum * 7 > 1 )
+            {
+                candidateStrategy = new MoveRandom();
+            }
+            else
+            {
+                candidateStrategy = new LoseMass();
+            }
+        }
+        else if ( cell instanceof Evader )
+        {
+            if ( randomNum * 6 > 5 )
+            {
+                candidateStrategy = new StandStill( cell );
+            }
+            else if ( randomNum * 6 > 4 )
+            {
+                candidateStrategy = new GrabFood( this );
+            }
+            else if ( randomNum * 6 > 3 )
+            {
+                candidateStrategy = new MoveRandom();
+            }
+            else if ( randomNum * 6 > 2 )
+            {
+                candidateStrategy = new MoveLinear( cell );
+            }
+            else if ( randomNum * 6 > 1 )
+            {
+                candidateStrategy = new AvoidLarger( cell );
+            }
+            else
+            {
+                candidateStrategy = new LoseMass();
+            }
+        }
+        else if ( cell instanceof Roamer )
+        {
+            if ( randomNum * 4 > 3 )
+            {
+                candidateStrategy = new StandStill( cell );
+            }
+            else if ( randomNum * 4 > 2 )
+            {
+                candidateStrategy = new GrabFood( this );
+            }
+            else if ( randomNum * 4 > 1 )
+            {
+                candidateStrategy = new MoveRandom();
+            }
+            else
+            {
+                candidateStrategy = new MoveLinear( cell );
+            }
+        }
+        else if ( cell instanceof BasicCell )
         {
             if ( randomNum * 2 > 1 )
             {
@@ -64,52 +150,7 @@ public class Environment
                 candidateStrategy = new GrabFood( this );
             }
         }
-        else if ( cell instanceof Roamer )
-        {
-            if ( randomNum * 4 > 1 )
-            {
-                candidateStrategy = new StandStill( cell );
-            }
-            else if ( randomNum * 4 > 2 )
-            {
-                candidateStrategy = new GrabFood( this );
-            }
-            else if ( randomNum * 4 > 3 )
-            {
-                candidateStrategy = new MoveRandom();
-            }
-            else
-            {
-                candidateStrategy = new MoveLinear( cell );
-            }
-        }
-        else if ( cell instanceof Evader )
-        {
-            if ( randomNum * 6 > 1 )
-            {
-                candidateStrategy = new StandStill( cell );
-            }
-            else if ( randomNum * 6 > 2 )
-            {
-                candidateStrategy = new GrabFood( this );
-            }
-            else if ( randomNum * 6 > 3 )
-            {
-                candidateStrategy = new MoveRandom();
-            }
-            else if ( randomNum * 6 > 4 )
-            {
-                candidateStrategy = new MoveLinear( cell );
-            }
-            else if ( randomNum * 6 > 5 )
-            {
-                candidateStrategy = new AvoidLarger();
-            }
-            else
-            {
-                candidateStrategy = new LoseMass( cell );
-            }
-        }
+
 
         cell.setStrategy( candidateStrategy );
         return candidateStrategy;
@@ -125,7 +166,7 @@ public class Environment
         BasicCell basicCellToBeCreated = new BasicCell( getRandomFactory().generateName() );
 
         basicCellToBeCreated.setDrawLocation( new Vector( getRandomFactory().generateDimension() ) );
-        basicCellToBeCreated.setDirection( new Vector( getRandomFactory().generateDimension() ) );
+        basicCellToBeCreated.setDirection( new Vector( RandomFactory.generateRandomDirection() ) );
         basicCellToBeCreated.setCenterLocation( new Vector( basicCellToBeCreated.getDrawLocation().getX() + basicCellToBeCreated.getMass() / 2, basicCellToBeCreated.getDrawLocation().getY() + basicCellToBeCreated.getMass() / 2 ) );
 
         StepStrategy stepStrategy = this.generateCellStepStrategy( basicCellToBeCreated );
@@ -139,38 +180,91 @@ public class Environment
     {
         this.setNumberOfSteps( this.getNumberOfSteps() + 1 );
 
-        this.changeStrategies();
-
         this.removeEatenFoods();
         this.removeEatenCells();
-        this.getFoodEntities().forEach( Entity::step );
-        this.getCellEntities().forEach( Entity::step );
+
+        this.compensateFoods();
+
+        this.evolveCells();
+
+        this.changeStrategies();
+
+        for ( int i = 0; i < getFoodEntities().size(); i++ )
+        {
+            getFoodEntities().get( i ).step();
+        }
+
+        for ( int i = 0; i < getCellEntities().size(); i++ )
+        {
+            getCellEntities().get( i ).step();
+            getCellEntities().get( i ).calculateRadius();
+        }
+    }
+
+    private void compensateFoods()
+    {
+        if ( getFoodEntities().size() < Constants.FOOD_ON_SCREEN )
+        {
+            for ( int i = 0; i < Constants.FOOD_ON_SCREEN - getFoodEntities().size(); i++ )
+            {
+                if ( Math.random() * 2 > 1 )
+                {
+                    this.createFood( getSugarFactory() );
+                }
+                else
+                {
+                    this.createFood( getOrganismFactory() );
+                }
+            }
+        }
     }
 
     private void changeStrategies()
     {
-        for ( Cell cell : getCellEntities() )
+        for ( int i = 0; i < getCellEntities().size(); i++ )
         {
-            if ( cell.getStrategy().isFinished() )
+            Cell cell = getCellEntities().get( i );
+            if ( getCellEntities().get( i ).getStrategy().isFinished() )
             {
                 this.generateCellStepStrategy( cell );
             }
         }
     }
 
-    public void initializeEnvironment( SugarFactory sugarFactory, OrganismFactory organismFactory )
+    private void evolveCells()
     {
-        for ( int i = 0; i < 20; i++ )
+        for ( int i = 0; i < getCellEntities().size(); i++ )
         {
-            this.createFood( sugarFactory );
+            Cell candidateCell = getCellEntities().get( i );
+
+            if ( candidateCell instanceof Evader && candidateCell.getMass() > Constants.EVADER_TO_HUNTER_MASS )
+            {
+                getCellEntities().set( i, new Hunter( candidateCell ) );
+            }
+            else if ( candidateCell instanceof Roamer && candidateCell.getMass() > Constants.ROAMER_TO_EVADER_MASS )
+            {
+                getCellEntities().set( i, new Evader( candidateCell ) );
+            }
+            else if ( candidateCell instanceof BasicCell && candidateCell.getMass() > Constants.BASICCELL_TO_ROAMER_MASS )
+            {
+                getCellEntities().set( i, new Roamer( candidateCell ) );
+            }
+        }
+    }
+
+    public void initializeEnvironment()
+    {
+        for ( int i = 0; i < Constants.SUGARS_ON_SCREEN; i++ )
+        {
+            this.createFood( this.getSugarFactory() );
         }
 
-        for ( int i = 0; i < 20; i++ )
+        for ( int i = 0; i < Constants.ORGANISMS_ON_SCREEN; i++ )
         {
-            this.createFood( organismFactory );
+            this.createFood( this.getOrganismFactory() );
         }
 
-        for ( int i = 0; i < 5; i++ )
+        for ( int i = 0; i < Constants.INITIAL_CELLS_ON_SCREEN; i++ )
         {
             this.createCell();
         }
@@ -198,17 +292,15 @@ public class Environment
 
         for ( int i = 0; i < getCellEntities().size(); i++ )
         {
-            Cell cell1 = (Cell) getCellEntities().get( i );
+            Cell cell1 = getCellEntities().get( i );
             for ( int j = i + 1; j < getCellEntities().size(); j++ )
             {
-                Cell cell2 = (Cell) getCellEntities().get( j );
+                Cell cell2 = getCellEntities().get( j );
 
                 double distance = cell1.getCenterLocation().distanceTo( cell2.getCenterLocation() );
                 //TODO: arrange according to mass/radius
                 if ( distance < cell1.getMass() / 2 || distance < cell2.getMass() / 2 )
                 {
-                    System.out.println( "its close" );
-                    System.out.printf( "%s mass: %d %s mass: %d\n", cell1.getName(), (int) cell1.getMass(), cell2.getName(), (int) cell2.getMass() );
                     if ( cell2.getMass() * 3 / 2 < cell1.getMass() )
                     {
                         cell1.addMass( cell2.getMass() );
@@ -233,23 +325,29 @@ public class Environment
 
     private void removeEatenFoods()
     {
-        for ( Iterator<Cell> cellIterator = getCellEntities().iterator(); cellIterator.hasNext(); )
-        {
-            Cell cell = (Cell) cellIterator.next();
-            for ( Iterator<Food> foodIterator = getFoodEntities().iterator(); foodIterator.hasNext(); )
-            {
-                Entity food = foodIterator.next();
+        ArrayList<Food> toBeDeletedFood = new ArrayList<>();
 
+        for ( int i = 0; i < getCellEntities().size(); i++ )
+        {
+            Cell cell = getCellEntities().get( i );
+
+            for ( int j = 0; j < getFoodEntities().size(); j++ )
+            {
+                Food food = getFoodEntities().get( j );
                 double distance = cell.getCenterLocation().distanceTo( food.getCenterLocation() );
                 //TODO: arrange according to mass/radius
                 if ( distance < cell.getMass() / 2 )
                 {
-                    // Remove the current element from the iterator and the list.
                     cell.addMass( food.getMass() );
                     cell.setFoodEaten( cell.getFoodEaten() + 1 );
-                    foodIterator.remove();
+                    toBeDeletedFood.add( food );
                 }
             }
+        }
+
+        for ( Food food : toBeDeletedFood )
+        {
+            getFoodEntities().remove( food );
         }
     }
 
@@ -311,6 +409,26 @@ public class Environment
     private void setNumberOfSteps( int numberOfSteps )
     {
         this.numberOfSteps = numberOfSteps;
+    }
+
+    public SugarFactory getSugarFactory()
+    {
+        return sugarFactory;
+    }
+
+    public void setSugarFactory( SugarFactory sugarFactory )
+    {
+        this.sugarFactory = sugarFactory;
+    }
+
+    public OrganismFactory getOrganismFactory()
+    {
+        return organismFactory;
+    }
+
+    public void setOrganismFactory( OrganismFactory organismFactory )
+    {
+        this.organismFactory = organismFactory;
     }
 }
 

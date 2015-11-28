@@ -1,19 +1,27 @@
 package org.khrotan.CENG443.AgarOO.StepStrategies;
 
-import org.khrotan.CENG443.AgarOO.Entity;
-import org.khrotan.CENG443.AgarOO.RandomFactory;
+import org.khrotan.CENG443.AgarOO.Entities.Cell;
+import org.khrotan.CENG443.AgarOO.Entities.Entity;
+import org.khrotan.CENG443.AgarOO.Factories.RandomFactory;
 
 public class AvoidLarger extends StepStrategy
 {
-    public AvoidLarger()
+    //TODO: en buyukse ne olacak ?
+    public AvoidLarger( Cell largerCell )
     {
         super.setNumberOfTurns( RandomFactory.generateStepTurnNumber() );
+        if ( largerCell == null )
+        {
+            return;
+        }
+        /*int antiX = largerCell.getCenterLocation().getX() -
+        Vector antiDirection =  */
     }
 
     @Override
     public String getName()
     {
-        return null;
+        return "AL";
     }
 
     @Override

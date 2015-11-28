@@ -1,4 +1,4 @@
-package org.khrotan.CENG443.AgarOO;
+package org.khrotan.CENG443.AgarOO.Entities;
 
 import org.khrotan.CENG443.AgarOO.StepStrategies.StepStrategy;
 
@@ -18,7 +18,7 @@ public abstract class Entity
 
     protected abstract void calculateAndSetCenterVector();
 
-    Color getColor()
+    public Color getColor()
     {
         return color;
     }
@@ -48,7 +48,7 @@ public abstract class Entity
         this.speed = speed;
     }
 
-    StepStrategy getStrategy()
+    public StepStrategy getStrategy()
     {
         return strategy;
     }

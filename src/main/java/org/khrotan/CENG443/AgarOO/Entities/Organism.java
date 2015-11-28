@@ -1,4 +1,4 @@
-package org.khrotan.CENG443.AgarOO;
+package org.khrotan.CENG443.AgarOO.Entities;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;

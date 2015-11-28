@@ -1,5 +1,6 @@
-org.khrotan.CENG443.AgarOO.Cell initial mass: 60
-org.khrotan.CENG443.AgarOO.Cell initial speed: 5
+Cell initial mass: 60
+Cell initial speed: 5
 
-org.khrotan.CENG443.AgarOO.Sugar mass: 4 - 6
-org.khrotan.CENG443.AgarOO.Organism mass: 8 - 12
+Sugar mass: 4 - 6
+Organism mass: 8 - 12
+

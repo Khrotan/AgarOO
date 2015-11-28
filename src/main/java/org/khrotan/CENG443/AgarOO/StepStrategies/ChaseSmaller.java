@@ -1,7 +1,7 @@
 package org.khrotan.CENG443.AgarOO.StepStrategies;
 
-import org.khrotan.CENG443.AgarOO.Entity;
-import org.khrotan.CENG443.AgarOO.RandomFactory;
+import org.khrotan.CENG443.AgarOO.Entities.Entity;
+import org.khrotan.CENG443.AgarOO.Factories.RandomFactory;
 
 public class ChaseSmaller extends StepStrategy
 {
@@ -13,7 +13,7 @@ public class ChaseSmaller extends StepStrategy
     @Override
     public String getName()
     {
-        return null;
+        return "CS";
     }
 
     @Override

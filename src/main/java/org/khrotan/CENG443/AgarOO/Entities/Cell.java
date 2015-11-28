@@ -1,13 +1,11 @@
-package org.khrotan.CENG443.AgarOO;
-
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
+package org.khrotan.CENG443.AgarOO.Entities;
 
 public abstract class Cell extends Entity
 {
-    private String name;
+    protected String name;
     private int foodEaten;
     private int cellsSwallowed;
+    private double radius;
 
     public void addMass( double additionalMass )
     {
@@ -19,12 +17,27 @@ public abstract class Cell extends Entity
         super.setMass( super.getMass() - toBeDeletedMass );
     }
 
+    public void calculateRadius()
+    {
+        radius = Math.sqrt( 100 * getMass() / Math.PI );
+    }
+
+    public double getRadius()
+    {
+        return radius;
+    }
+
+    public void setRadius( double radius )
+    {
+        this.radius = radius;
+    }
+
     public String getName()
     {
         return name;
     }
 
-    void setName( String name )
+    protected void setName( String name )
     {
         this.name = name;
     }
@@ -44,15 +57,9 @@ public abstract class Cell extends Entity
         return cellsSwallowed;
     }
 
-    void setCellsSwallowed( int cellsSwallowed )
+    public void setCellsSwallowed( int cellsSwallowed )
     {
         this.cellsSwallowed = cellsSwallowed;
-    }
-
-    public void draw( Graphics2D g2d )
-    {
-        g2d.setPaint( this.getColor() );
-        g2d.draw( new Ellipse2D.Double( this.getDrawLocation().getX(), this.getDrawLocation().getY(), getMass(), getMass() ) );
     }
 
     @Override

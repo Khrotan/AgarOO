@@ -1,6 +1,10 @@
 package org.khrotan.CENG443.AgarOO.StepStrategies;
 
-import org.khrotan.CENG443.AgarOO.*;
+import org.khrotan.CENG443.AgarOO.Entities.Entity;
+import org.khrotan.CENG443.AgarOO.Entities.Food;
+import org.khrotan.CENG443.AgarOO.Entities.Vector;
+import org.khrotan.CENG443.AgarOO.Environment;
+import org.khrotan.CENG443.AgarOO.Factories.RandomFactory;
 
 public class GrabFood extends StepStrategy
 {
@@ -42,7 +46,7 @@ public class GrabFood extends StepStrategy
     @Override
     public String getName()
     {
-        return "GrabFood";
+        return "GF";
     }
 
     @Override

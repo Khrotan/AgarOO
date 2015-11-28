@@ -1,5 +1,9 @@
 package org.khrotan.CENG443.AgarOO;
 
+import org.khrotan.CENG443.AgarOO.Panels.GameDisplayPanel;
+import org.khrotan.CENG443.AgarOO.Panels.InformationPanel;
+import org.khrotan.CENG443.AgarOO.Panels.LogoPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,6 +24,7 @@ class ApplicationWindow extends JFrame
 
         this.setTitle( "Agar.OO" );
         this.setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE );
+        this.setLocationByPlatform( true );
 
         this.setLayout( null );
         this.add( logoPanel );
@@ -27,6 +32,7 @@ class ApplicationWindow extends JFrame
         this.add( gameDisplayPanel );
         this.setSize( new Dimension( 1024, 768 ) );
         this.setResizable( false );
+
     }
 
     @Override
