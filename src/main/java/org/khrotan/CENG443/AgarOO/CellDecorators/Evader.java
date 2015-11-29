@@ -18,6 +18,7 @@ public class Evader extends CellDecorator
     {
         decoratedCell.draw( g2d );
         g2d.setPaint( Color.BLUE );
+        //TODO: radius
         g2d.drawOval( (int) ( this.getCenterLocation().getX() - ( this.getMass() / 4 ) ), (int) ( this.getCenterLocation().getY() - ( this.getMass() / 4 ) ), (int) this.getMass() / 2, (int) this.getMass() / 2 );
     }
 }

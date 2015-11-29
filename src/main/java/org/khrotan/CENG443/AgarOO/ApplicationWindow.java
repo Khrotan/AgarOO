@@ -32,15 +32,14 @@ class ApplicationWindow extends JFrame
         this.add( gameDisplayPanel );
         this.setSize( new Dimension( 1024, 768 ) );
         this.setResizable( false );
-
     }
 
     @Override
     public void paintComponents( Graphics g )
     {
         super.paintComponents( g );
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON );
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON );
     }
 
     public LogoPanel getLogoPanel()

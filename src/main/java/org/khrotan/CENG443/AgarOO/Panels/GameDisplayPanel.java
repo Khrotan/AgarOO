@@ -14,7 +14,6 @@ public class GameDisplayPanel extends JPanel
     public GameDisplayPanel( Environment environment )
     {
         environmentReference = environment;
-        //TODO: choose appropriate value
         this.setBounds( Constants.LEFT_PANEL_WIDTH, 0, Constants.WINDOWS_WIDTH - Constants.LEFT_PANEL_WIDTH, Constants.WINDOWS_HEIGHT );
         this.setSize( Constants.WINDOWS_WIDTH - Constants.LEFT_PANEL_WIDTH, Constants.WINDOWS_HEIGHT );
     }

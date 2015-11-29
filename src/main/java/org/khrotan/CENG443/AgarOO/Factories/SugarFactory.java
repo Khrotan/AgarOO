@@ -13,7 +13,6 @@ public class SugarFactory extends FoodFactory
     {
         Sugar sugarToBeCreated = new Sugar();
 
-        //TODO: choose a mass value
         sugarToBeCreated.setMass( env.getRandomFactory().generateNumberBetween( Constants.SUGAR_MASS_LOW, Constants.SUGAR_MASS_HIGH ) );
         sugarToBeCreated.setColor( RandomFactory.generateColor() );
         sugarToBeCreated.setSpeed( 0 );

@@ -6,10 +6,15 @@ public abstract class Cell extends Entity
     private int foodEaten;
     private int cellsSwallowed;
     private double radius;
+    private int highestMass;
 
     public void addMass( double additionalMass )
     {
         super.setMass( super.getMass() + additionalMass );
+        if ( super.getMass() > this.getHighestMass() )
+        {
+            this.setHighestMass( (int) super.getMass() );
+        }
     }
 
     public void removeMass( double toBeDeletedMass )
@@ -62,9 +67,20 @@ public abstract class Cell extends Entity
         this.cellsSwallowed = cellsSwallowed;
     }
 
+    public int getHighestMass()
+    {
+        return highestMass;
+    }
+
+    public void setHighestMass( int highestMass )
+    {
+        this.highestMass = highestMass;
+    }
+
     @Override
     public void calculateAndSetCenterVector()
     {
+        //TODO: radius
         this.getCenterLocation().setX( this.getDrawLocation().getX() + getMass() / 2 );
         this.getCenterLocation().setY( this.getDrawLocation().getY() + getMass() / 2 );
     }

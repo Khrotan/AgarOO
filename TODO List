@@ -3,8 +3,7 @@
 //TODO: Mass drawing algorithm
 //TODO: Make entities does not spawn on edges
 //TODO: Reflect entities on edges
-//TODO: Decide on which masses cells will evolve
-//TODO: Information Window
 //TODO: Logo
 //TODO: Determine evolving ranges
 //TODO: Entities spawn on outside of screen
+//TODO: choose an appropriate mass value

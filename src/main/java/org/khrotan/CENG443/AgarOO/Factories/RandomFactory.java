@@ -15,36 +15,36 @@ public class RandomFactory
     public RandomFactory()
     {
         this.metuCengNames = new ArrayList<>();
-        this.metuCengNames.add( "Ahmet Oguz Akyuz" );
-        this.metuCengNames.add( "Ferda Nur Alpaslan" );
-        this.metuCengNames.add( "Ismail Sengor Altingovde" );
-        this.metuCengNames.add( "Volkan Atalay" );
-        this.metuCengNames.add( "Aysenur Birturk" );
-        this.metuCengNames.add( "Tolga Can" );
-        this.metuCengNames.add( "Ruken Cakici" );
-        this.metuCengNames.add( "Nihan Cicekli" );
-        this.metuCengNames.add( "Ali Hikmet Dogru" );
-        this.metuCengNames.add( "Seyda Ertekin" );
-        this.metuCengNames.add( "Veysi Isler" );
-        this.metuCengNames.add( "Sinan Kalkan" );
-        this.metuCengNames.add( "Pinar Karagoz" );
-        this.metuCengNames.add( "Murat Manguoglu" );
-        this.metuCengNames.add( "Halit Oguztuzun" );
-        this.metuCengNames.add( "Ertan Onur" );
-        this.metuCengNames.add( "Atilla Ozgit" );
-        this.metuCengNames.add( "Faruk Polat" );
-        this.metuCengNames.add( "Yusuf Sahillioglu" );
-        this.metuCengNames.add( "Uluc Saranli" );
-        this.metuCengNames.add( "Erol Sahin" );
-        this.metuCengNames.add( "Onur Tolga Sehitoglu" );
-        this.metuCengNames.add( "Cevat Sener" );
-        this.metuCengNames.add( "Sibel Tari" );
-        this.metuCengNames.add( "Selim Temizer" );
-        this.metuCengNames.add( "Ismail Hakki Toroslu" );
-        this.metuCengNames.add( "Gokturk Ucoluk" );
-        this.metuCengNames.add( "Fatos Yarman Vural" );
-        this.metuCengNames.add( "Adnan TheBoss Yazici" );
-        this.metuCengNames.add( "Asuman Dogac" );
+        this.metuCengNames.add( "AhmetOguz" );
+        this.metuCengNames.add( "FerdaNur" );
+        this.metuCengNames.add( "IsmailSengor" );
+        this.metuCengNames.add( "VolkanAtalay" );
+        this.metuCengNames.add( "Aysenur" );
+        this.metuCengNames.add( "TolgaCan" );
+        this.metuCengNames.add( "RukenCakici" );
+        this.metuCengNames.add( "NihanCicekli" );
+        this.metuCengNames.add( "HikmetDogru" );
+        this.metuCengNames.add( "SeydaErtekin" );
+        this.metuCengNames.add( "VeysiIsler" );
+        this.metuCengNames.add( "SinanKalkan" );
+        this.metuCengNames.add( "PinarKaragoz" );
+        this.metuCengNames.add( "Murat" );
+        this.metuCengNames.add( "Halit" );
+        this.metuCengNames.add( "ErtanOnur" );
+        this.metuCengNames.add( "AtillaOzgit" );
+        this.metuCengNames.add( "FarukPolat" );
+        this.metuCengNames.add( "Yusuf" );
+        this.metuCengNames.add( "UlucSaranli" );
+        this.metuCengNames.add( "ErolSahin" );
+        this.metuCengNames.add( "OnurTolga" );
+        this.metuCengNames.add( "CevatSener" );
+        this.metuCengNames.add( "SibelTari" );
+        this.metuCengNames.add( "SelimTemizer" );
+        this.metuCengNames.add( "Ismail" );
+        this.metuCengNames.add( "Gokturk" );
+        this.metuCengNames.add( "FatosVural" );
+        this.metuCengNames.add( "AdnanYazici" );
+        this.metuCengNames.add( "AsumanDogac" );
 
     }
 

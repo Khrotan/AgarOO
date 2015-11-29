@@ -18,6 +18,7 @@ public class Roamer extends CellDecorator
     {
         decoratedCell.draw( g2d );
         g2d.setPaint( Color.GREEN );
+        //TODO: radius
         g2d.drawOval( (int) ( this.getCenterLocation().getX() - ( this.getMass() / 8 ) ), (int) ( this.getCenterLocation().getY() - ( this.getMass() / 8 ) ), (int) this.getMass() / 4, (int) this.getMass() / 4 );
     }
 }

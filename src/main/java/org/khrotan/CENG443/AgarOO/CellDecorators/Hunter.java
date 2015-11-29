@@ -18,6 +18,7 @@ public class Hunter extends CellDecorator
     {
         decoratedCell.draw( g2d );
         g2d.setPaint( Color.RED );
+        //TODO: radius
         g2d.drawOval( (int) ( this.getCenterLocation().getX() - ( this.getMass() * ( 0.375 ) ) ), (int) ( this.getCenterLocation().getY() - ( this.getMass() * ( 0.375 ) ) ), (int) ( this.getMass() * ( 0.75 ) ), (int) ( this.getMass() * ( 0.75 ) ) );
     }
 }

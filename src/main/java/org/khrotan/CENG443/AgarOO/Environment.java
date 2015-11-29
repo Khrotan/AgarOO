@@ -56,7 +56,48 @@ public class Environment
         return candidateStrategy;
     }
 
-    private StepStrategy generateCellStepStrategy( Cell cell )
+    public Cell findClosestSmallerCell( Entity cell )
+    {
+        double closestDistance = Double.MAX_VALUE;
+        Cell resultCell = null;
+        for ( int i = 0; i < this.getCellEntities().size(); i++ )
+        {
+            Cell candidateCell = getCellEntities().get( i );
+            if ( cell.equals( candidateCell ) || ( cell.getMass() < candidateCell.getMass() ) )
+            {
+                continue;
+            }
+            if ( closestDistance > cell.getCenterLocation().distanceTo( candidateCell.getCenterLocation() ) )
+            {
+                resultCell = candidateCell;
+                closestDistance = cell.getCenterLocation().distanceTo( candidateCell.getCenterLocation() );
+            }
+        }
+        return resultCell;
+    }
+
+    public Cell findClosestLargerCell( Entity cell )
+    {
+        double closestDistance = Double.MAX_VALUE;
+        Cell resultCell = null;
+        for ( int i = 0; i < getCellEntities().size(); i++ )
+        {
+            Cell candidateCell = getCellEntities().get( i );
+            if ( ( cell.equals( candidateCell ) ) || ( cell.getMass() > candidateCell.getMass() ) )
+            {
+                continue;
+            }
+
+            if ( closestDistance > candidateCell.getCenterLocation().distanceTo( cell.getCenterLocation() ) )
+            {
+                closestDistance = candidateCell.getCenterLocation().distanceTo( cell.getCenterLocation() );
+                resultCell = candidateCell;
+            }
+        }
+        return resultCell;
+    }
+
+    public StepStrategy generateCellStepStrategy( Cell cell )
     {
         StepStrategy candidateStrategy = null;
 
@@ -66,7 +107,7 @@ public class Environment
         {
             if ( randomNum * 7 > 6 )
             {
-                candidateStrategy = new StandStill( cell );
+                candidateStrategy = new ChaseSmaller( this );
             }
             else if ( randomNum * 7 > 5 )
             {
@@ -78,7 +119,7 @@ public class Environment
             }
             else if ( randomNum * 7 > 3 )
             {
-                candidateStrategy = new AvoidLarger( cell );
+                candidateStrategy = new AvoidLarger( this );
             }
             else if ( randomNum * 7 > 2 )
             {
@@ -113,7 +154,7 @@ public class Environment
             }
             else if ( randomNum * 6 > 1 )
             {
-                candidateStrategy = new AvoidLarger( cell );
+                candidateStrategy = new AvoidLarger( this );
             }
             else
             {
@@ -167,6 +208,7 @@ public class Environment
 
         basicCellToBeCreated.setDrawLocation( new Vector( getRandomFactory().generateDimension() ) );
         basicCellToBeCreated.setDirection( new Vector( RandomFactory.generateRandomDirection() ) );
+        //TODO: radius
         basicCellToBeCreated.setCenterLocation( new Vector( basicCellToBeCreated.getDrawLocation().getX() + basicCellToBeCreated.getMass() / 2, basicCellToBeCreated.getDrawLocation().getY() + basicCellToBeCreated.getMass() / 2 ) );
 
         StepStrategy stepStrategy = this.generateCellStepStrategy( basicCellToBeCreated );
@@ -197,7 +239,7 @@ public class Environment
         for ( int i = 0; i < getCellEntities().size(); i++ )
         {
             getCellEntities().get( i ).step();
-            getCellEntities().get( i ).calculateRadius();
+            getCellEntities().get( i ).setSpeed( ( 2.0D + 100 / getCellEntities().get( i ).getMass() ) );
         }
     }
 
@@ -301,12 +343,14 @@ public class Environment
                 //TODO: arrange according to mass/radius
                 if ( distance < cell1.getMass() / 2 || distance < cell2.getMass() / 2 )
                 {
+                    //TODO: arrange according to mass/radius
                     if ( cell2.getMass() * 3 / 2 < cell1.getMass() )
                     {
                         cell1.addMass( cell2.getMass() );
                         cell1.setCellsSwallowed( cell1.getCellsSwallowed() + 1 );
                         toBeDeletedCells.add( cell2 );
                     }
+                    //TODO: arrange according to mass/radius
                     else if ( cell1.getMass() * 3 / 2 < cell2.getMass() / 2 )
                     {
                         cell2.addMass( cell1.getMass() );
@@ -330,7 +374,6 @@ public class Environment
         for ( int i = 0; i < getCellEntities().size(); i++ )
         {
             Cell cell = getCellEntities().get( i );
-
             for ( int j = 0; j < getFoodEntities().size(); j++ )
             {
                 Food food = getFoodEntities().get( j );
@@ -401,7 +444,7 @@ public class Environment
         this.cellEntities = cellEntities;
     }
 
-    private int getNumberOfSteps()
+    public int getNumberOfSteps()
     {
         return numberOfSteps;
     }

@@ -40,6 +40,7 @@ public class MoveLinear extends StepStrategy
         {
             e.getDirection().setX( -1 * e.getDirection().getX() );
         }
+        //TODO: radius
         if ( e.getDrawLocation().getX() + e.getMass() > 800 && e.getDirection().getX() > 0 )
         {
             e.getDirection().setX( -1 * e.getDirection().getX() );
@@ -48,6 +49,7 @@ public class MoveLinear extends StepStrategy
         {
             e.getDirection().setY( -1 * e.getDirection().getY() );
         }
+        //TODO: radius
         if ( e.getDrawLocation().getY() + e.getMass() > Constants.WINDOWS_HEIGHT && e.getDirection().getY() > 0 )
         {
             e.getDirection().setY( -1 * e.getDirection().getY() );
