@@ -1,7 +1,7 @@
 package org.khrotan.CENG443.AgarOO.Entities;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.AffineTransform;
 
 public class Sugar extends Food
 {
@@ -11,7 +11,16 @@ public class Sugar extends Food
     {
         g2d.setRenderingHint( RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON );
         g2d.setPaint( getColor() );
-        g2d.draw( new Rectangle2D.Double( (int) this.getDrawLocation().getX(), (int) this.getDrawLocation().getY(), this.getSideHalfLength(), this.getSideHalfLength() ) );
+
+        AffineTransform old = g2d.getTransform();
+
+        g2d.translate( this.getDrawLocation().getX(), this.getDrawLocation().getY() );
+        g2d.rotate( this.hashCode() % 360 );
+
+
+        g2d.drawRect( 0, 0, sideHalfLength, sideHalfLength );
+        g2d.setTransform( old );
+
     }
 
     @Override

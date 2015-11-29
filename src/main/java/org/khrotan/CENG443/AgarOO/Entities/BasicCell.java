@@ -32,6 +32,11 @@ public class BasicCell extends Cell
         // TODO: choose an appropriate algorithm for radius
         g2d.fill( new Ellipse2D.Double( getDrawLocation().getX(), getDrawLocation().getY(), getMass(), getMass() ) );
 
+        // Line
+        g2d.setPaint( this.getColor().darker() );
+        g2d.setStroke( new BasicStroke( 3 ) );
+        g2d.drawLine( (int) this.getCenterLocation().getX(), (int) this.getCenterLocation().getY(), (int) ( this.getCenterLocation().getX() + ( getMass() / 2 ) * getDirection().getX() ), (int) ( this.getCenterLocation().getY() + ( getMass() / 2 ) * getDirection().getY() ) );
+
         // Food Eaten - Cells Swallowed
         g2d.setPaint( Color.BLACK );
         g2d.drawString( Integer.toString( this.getFoodEaten() ) + " - " + Integer.toString( this.getCellsSwallowed() ), (float) this.getCenterLocation().getX() - 10, (float) this.getCenterLocation().getY() - 20 );

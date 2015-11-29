@@ -9,7 +9,7 @@ import org.khrotan.CENG443.AgarOO.Factories.RandomFactory;
 public class AvoidLarger extends StepStrategy
 {
 
-    Environment env;
+    private final Environment env;
 
     public AvoidLarger( Environment env )
     {

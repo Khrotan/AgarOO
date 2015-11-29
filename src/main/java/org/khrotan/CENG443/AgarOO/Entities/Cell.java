@@ -2,7 +2,7 @@ package org.khrotan.CENG443.AgarOO.Entities;
 
 public abstract class Cell extends Entity
 {
-    protected String name;
+    private String name;
     private int foodEaten;
     private int cellsSwallowed;
     private double radius;
@@ -22,7 +22,7 @@ public abstract class Cell extends Entity
         super.setMass( super.getMass() - toBeDeletedMass );
     }
 
-    public void calculateRadius()
+    void calculateRadius()
     {
         radius = Math.sqrt( 100 * getMass() / Math.PI );
     }
@@ -72,7 +72,7 @@ public abstract class Cell extends Entity
         return highestMass;
     }
 
-    public void setHighestMass( int highestMass )
+    private void setHighestMass( int highestMass )
     {
         this.highestMass = highestMass;
     }

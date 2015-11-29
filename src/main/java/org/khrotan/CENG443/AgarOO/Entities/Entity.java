@@ -35,7 +35,7 @@ public abstract class Entity
         }
 
         //TODO: radius
-        if ( this.getCenterLocation().getX() > ( Constants.WINDOWS_WIDTH - this.getMass() / 2 ) )
+        if ( this.getCenterLocation().getX() > ( Constants.WINDOWS_WIDTH ) )
         {
             //TODO: radius
             this.getDrawLocation().setX( Constants.WINDOWS_WIDTH - this.getMass() / 2 );

@@ -8,7 +8,7 @@ import org.khrotan.CENG443.AgarOO.Factories.RandomFactory;
 
 public class ChaseSmaller extends StepStrategy
 {
-    Environment env;
+    private final Environment env;
 
     public ChaseSmaller( Environment env )
     {

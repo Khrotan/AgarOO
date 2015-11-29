@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 
 public class InformationPanel extends JPanel
 {
-    Environment env;
+    private final Environment env;
 
     public InformationPanel( Environment env )
     {

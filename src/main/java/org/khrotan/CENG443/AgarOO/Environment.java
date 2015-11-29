@@ -14,20 +14,15 @@ import java.util.ArrayList;
 
 public class Environment
 {
-    SugarFactory sugarFactory;
-    OrganismFactory organismFactory;
-    private int windowWidth;
-    private int windowHeight;
+    private SugarFactory sugarFactory;
+    private OrganismFactory organismFactory;
     private volatile ArrayList<Food> foodEntities;
     private volatile ArrayList<Cell> cellEntities;
     private RandomFactory randomFactory;
     private int numberOfSteps;
 
-    public Environment( int windowWidth, int windowHeight )
+    public Environment()
     {
-        setWindowWidth( windowWidth );
-        setWindowHeight( windowHeight );
-
         setFoodEntities( new ArrayList<>() );
         setCellEntities( new ArrayList<>() );
 
@@ -39,7 +34,7 @@ public class Environment
 
     public StepStrategy generateSugarStepStrategy( Entity sugar )
     {
-        return new StandStill( sugar );
+        return new StandStill();
     }
 
     public StepStrategy generateOrganismStepStrategy( Entity organism )
@@ -51,7 +46,7 @@ public class Environment
         }
         else
         {
-            candidateStrategy = new StandStill( organism );
+            candidateStrategy = new StandStill();
         }
         return candidateStrategy;
     }
@@ -138,7 +133,7 @@ public class Environment
         {
             if ( randomNum * 6 > 5 )
             {
-                candidateStrategy = new StandStill( cell );
+                candidateStrategy = new StandStill();
             }
             else if ( randomNum * 6 > 4 )
             {
@@ -165,7 +160,7 @@ public class Environment
         {
             if ( randomNum * 4 > 3 )
             {
-                candidateStrategy = new StandStill( cell );
+                candidateStrategy = new StandStill();
             }
             else if ( randomNum * 4 > 2 )
             {
@@ -184,7 +179,7 @@ public class Environment
         {
             if ( randomNum * 2 > 1 )
             {
-                candidateStrategy = new StandStill( cell );
+                candidateStrategy = new StandStill();
             }
             else
             {
@@ -394,26 +389,6 @@ public class Environment
         }
     }
 
-    public int getWindowWidth()
-    {
-        return windowWidth;
-    }
-
-    private void setWindowWidth( int windowWidth )
-    {
-        this.windowWidth = windowWidth;
-    }
-
-    public int getWindowHeight()
-    {
-        return windowHeight;
-    }
-
-    private void setWindowHeight( int windowHeight )
-    {
-        this.windowHeight = windowHeight;
-    }
-
     public ArrayList<Food> getFoodEntities()
     {
         return foodEntities;
@@ -454,22 +429,22 @@ public class Environment
         this.numberOfSteps = numberOfSteps;
     }
 
-    public SugarFactory getSugarFactory()
+    private SugarFactory getSugarFactory()
     {
         return sugarFactory;
     }
 
-    public void setSugarFactory( SugarFactory sugarFactory )
+    private void setSugarFactory( SugarFactory sugarFactory )
     {
         this.sugarFactory = sugarFactory;
     }
 
-    public OrganismFactory getOrganismFactory()
+    private OrganismFactory getOrganismFactory()
     {
         return organismFactory;
     }
 
-    public void setOrganismFactory( OrganismFactory organismFactory )
+    private void setOrganismFactory( OrganismFactory organismFactory )
     {
         this.organismFactory = organismFactory;
     }

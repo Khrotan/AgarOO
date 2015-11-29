@@ -25,7 +25,7 @@ public class LoseMass extends StepStrategy
         e.setMass( e.getMass() * ( 1 - getLosePercentage() ) );
     }
 
-    public double getLosePercentage()
+    private double getLosePercentage()
     {
         return losePercentage;
     }

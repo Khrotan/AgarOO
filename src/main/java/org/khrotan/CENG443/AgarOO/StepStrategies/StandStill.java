@@ -5,7 +5,7 @@ import org.khrotan.CENG443.AgarOO.Factories.RandomFactory;
 
 public class StandStill extends StepStrategy
 {
-    public StandStill( Entity entity )
+    public StandStill()
     {
         super.setNumberOfTurns( RandomFactory.generateStepTurnNumber() );
     }

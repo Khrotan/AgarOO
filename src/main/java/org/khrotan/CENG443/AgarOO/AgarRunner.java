@@ -31,7 +31,7 @@ class AgarRunner
 
     private AgarRunner()
     {
-        setEnvironment( new Environment( Constants.WINDOWS_WIDTH, Constants.WINDOWS_HEIGHT ) );
+        setEnvironment( new Environment() );
 
         setLogoPanel( new LogoPanel( this.getLogo() ) );
         setInformationPanel( new InformationPanel( getEnvironment() ) );
@@ -71,7 +71,7 @@ class AgarRunner
         this.environment = environment;
     }
 
-    public BufferedImage getLogo()
+    private BufferedImage getLogo()
     {
         return logo;
     }
